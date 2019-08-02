@@ -1,5 +1,7 @@
 jobs:
   validate:
+    docker:
+      - image: hashicorp/terraform:0.12.6
     steps:
       - checkout
       - run:
@@ -20,9 +22,6 @@ jobs:
       - run:
           name: Check Terraform configurations with tflint
           command: tflint
-      - persist_to_workspace:
-          root: .
-          paths: .
 
 workflows:
   version: 2
