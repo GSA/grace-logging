@@ -1,5 +1,7 @@
 jobs:
   validate:
+    environment:
+        AWS_DEFAULT_REGION: us-east-1
     docker:
       - image: hashicorp/terraform:0.12.6
     steps:
