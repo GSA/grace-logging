@@ -20,7 +20,7 @@ data "aws_iam_policy_document" "secops" {
 resource "aws_iam_role" "secops" {
   count              = "${length(var.secops_accounts) > 0 ? 1 : 0}"
   name               = "${var.secops_role_name}"
-  assume_role_policy = "${data.aws_iam_policy_document.secops.json}"
+  assume_role_policy = "${data.aws_iam_policy_document.secops.0.json}"
 }
 
 # Create IAM policy
