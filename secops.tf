@@ -27,7 +27,7 @@ resource "aws_iam_role" "secops" {
 resource "aws_iam_role_policy" "secops" {
   count = "${length(var.secops_accounts) > 0 ? 1 : 0}"
   name  = "${var.secops_role_name}"
-  role  = "${aws_iam_role.secops.id}"
+  role  = "${aws_iam_role.secops.0.id}"
 
   policy = <<EOF
 {
