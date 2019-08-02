@@ -1,8 +1,5 @@
 jobs:
   validate:
-    <<: *terraform
-    environment:
-        AWS_DEFAULT_REGION: us-east-1
     steps:
       - checkout
       - run:
