@@ -45,12 +45,12 @@ output "logging_bucket_id" {
 
 
 output "secops_role_arn" {
-  value = "${aws_iam_role.secops.arn}"
+  value = "${aws_iam_role.secops.0.arn}"
 }
 
 output "secops_role_id" {
-  value = "${aws_iam_role.secops.id}"
+  value = "${aws_iam_role.secops.0.id}"
 }
 output "secops_policy_id" {
-  value = "${aws_iam_role_policy.secops.id}"
+  value = "${aws_iam_role_policy.secops.0.id}"
 }
