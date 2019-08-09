@@ -12,7 +12,7 @@ resource "aws_cloudtrail" "cloudtrail" {
   include_global_service_events = "${var.cloudtrail_include_global_service_events}"
   is_multi_region_trail         = "${var.cloudtrail_multi_region}"
   enable_log_file_validation    = "${var.cloudtrail_enable_log_validation}"
-  kms_key_id                    = "${aws_kms_key.cloudtrail.key_id}"
+  kms_key_id                    = "${aws_kms_key.cloudtrail.arn}"
   cloud_watch_logs_group_arn    = "${aws_cloudwatch_log_group.cloudtrail.arn}"
   cloud_watch_logs_role_arn     = "${aws_iam_role.cloudtrail.arn}"
 }
