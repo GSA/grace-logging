@@ -20,7 +20,7 @@
             "Condition": {
               "StringLike": {
                 "kms:EncryptionContext:aws:cloudtrail:arn":[
-       	 	      "arn:aws:cloudtrail:*:${account_id}:trail/*",
+       	 	      "arn:aws:cloudtrail:*:${account_id}:trail/*"
       			  ]}
             }
         },
