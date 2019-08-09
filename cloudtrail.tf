@@ -79,9 +79,10 @@ END_OF_POLICY
 }
 
 data "template_file" "cloudtrail_key_policy" {
-  template = "${file("${path.module}/files/cloudtrail_key_policy.tpl")}"
+  template = "${file("${path.module}/files/cloudtrail_key_policy.tpl.json")}"
   vars = {
-    account_id = "${local.account_id}"
+    account_id = "${data.aws_caller_identity.current.account_id}"
+    region     = "${data.aws_region.current.name}"
   }
 }
 
