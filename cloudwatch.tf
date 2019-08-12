@@ -9,8 +9,6 @@ resource "aws_s3_bucket" "logging" {
   bucket = "${var.logging_bucket_name}"
   acl    = "${var.logging_bucket_acl}"
 
-  depends_on = ["aws_s3_bucket_policy.logging"]
-
   logging {
     target_bucket = "${aws_s3_bucket.access.id}"
     target_prefix = "${var.logging_access_logging_prefix}"
@@ -57,7 +55,7 @@ resource "aws_s3_bucket_public_access_block" "logging" {
 
 # Create Bucket Policy
 resource "aws_s3_bucket_policy" "logging" {
-  bucket = "${var.logging_bucket_name}"
+  bucket = "${aws_s3_bucket.logging.id}"
 
   policy = <<POLICY
 {
