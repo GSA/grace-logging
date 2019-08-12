@@ -53,99 +53,20 @@ resource "aws_s3_bucket_public_access_block" "logging" {
   restrict_public_buckets = "${var.logging_bucket_restrict_public_buckets}"
 }
 
+data "template_file" "bucket_policy" {
+  template = "${file("${path.module}/files/bucket_policy.tpl.json")}"
+  vars = {
+    bucket            = "${var.logging_bucket_name}"
+    flowlog_folder    = "${var.flowlogs_bucket_prefix}"
+    cloudtrail_folder = "${var.cloudtrail_bucket_prefix}"
+  }
+}
+
 # Create Bucket Policy
 resource "aws_s3_bucket_policy" "logging" {
   bucket = "${aws_s3_bucket.logging.id}"
-
-  policy = <<POLICY
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Sid": "AWSLogDeliveryWrite",
-            "Effect": "Allow",
-            "Principal": {
-                "Service": [
-                    "config.amazonaws.com",
-                    "cloudtrail.amazonaws.com"
-                ]
-            },
-            "Action": "s3:PutObject",
-            "Resource": "arn:aws:s3:::${var.logging_bucket_name}/*"
-        },
-        {
-            "Sid": "AWSLogDeliveryWrite",
-            "Effect": "Allow",
-            "Principal": {
-                "Service": [
-                    "config.amazonaws.com",
-                    "cloudtrail.amazonaws.com"
-                ]
-            },
-            "Action": "s3:PutObject",
-            "Resource": "arn:aws:s3:::${var.logging_bucket_name}/${var.flowlogs_bucket_prefix}/*",
-            "Condition": {
-                "StringEquals": {
-                    "s3:x-amz-acl": "bucket-owner-full-control"
-                }
-            }
-        },
-        {
-            "Sid": "AWSCloudTrailWrite20150319",
-            "Effect": "Allow",
-            "Principal": {
-                "Service": "cloudtrail.amazonaws.com"
-            },
-            "Action": "s3:PutObject",
-            "Resource": "arn:aws:s3:::${var.logging_bucket_name}/${var.cloudtrail_bucket_prefix}/*"
-        },
-        {
-            "Sid": "AWSLogDeliveryAclCheck",
-            "Effect": "Allow",
-            "Principal": {
-                "Service": [
-                    "config.amazonaws.com",
-                    "cloudtrail.amazonaws.com",
-                    "delivery.logs.amazonaws.com"
-                ]
-            },
-            "Action": "s3:GetBucketAcl",
-            "Resource": "arn:aws:s3:::${var.logging_bucket_name}"
-        },
-        {
-            "Sid": "DenyUnEncryptedObjectUploads",
-            "Effect": "Deny",
-            "Principal": {
-                "AWS": "*"
-            },
-            "Action": "s3:PutObject",
-            "Resource": "arn:aws:s3:::${var.logging_bucket_name}/*",
-            "Condition": {
-                "StringNotEquals": {
-                    "s3:x-amz-server-side-encryption": [
-                        "AES256",
-                        "aws:kms"
-                    ]
-                }
-            }
-        },
-        {
-            "Sid": "DenyUnEncryptedObjectUploads",
-            "Effect": "Deny",
-            "Principal": "*",
-            "Action": "s3:PutObject",
-            "Resource": "arn:aws:s3:::${var.logging_bucket_name}/*",
-            "Condition": {
-                "Null": {
-                    "s3:x-amz-server-side-encryption": "true"
-                }
-            }
-        }
-    ]
+  policy = "${data.template_file.bucket_policy.rendered}"
 }
-POLICY
-}
-
 
 ######################################
 #                                    #
