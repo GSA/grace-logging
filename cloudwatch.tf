@@ -9,6 +9,8 @@ resource "aws_s3_bucket" "logging" {
   bucket = "${var.logging_bucket_name}"
   acl    = "${var.logging_bucket_acl}"
 
+  depends_on = ["aws_s3_bucket_policy.logging"]
+
   logging {
     target_bucket = "${aws_s3_bucket.access.id}"
     target_prefix = "${var.logging_access_logging_prefix}"
@@ -55,7 +57,7 @@ resource "aws_s3_bucket_public_access_block" "logging" {
 
 # Create Bucket Policy
 resource "aws_s3_bucket_policy" "logging" {
-  bucket = "${aws_s3_bucket.logging.id}"
+  bucket = "${var.logging_bucket_name}"
 
   policy = <<POLICY
 {
@@ -83,7 +85,7 @@ resource "aws_s3_bucket_policy" "logging" {
                 ]
             },
             "Action": "s3:PutObject",
-            "Resource": "arn:aws:s3:::${var.logging_bucket_name}/flowlogs/*",
+            "Resource": "arn:aws:s3:::${var.logging_bucket_name}/${var.flowlogs_bucket_prefix}/*",
             "Condition": {
                 "StringEquals": {
                     "s3:x-amz-acl": "bucket-owner-full-control"
@@ -97,7 +99,7 @@ resource "aws_s3_bucket_policy" "logging" {
                 "Service": "cloudtrail.amazonaws.com"
             },
             "Action": "s3:PutObject",
-            "Resource": "arn:aws:s3:::${var.logging_bucket_name}/cloudtrail/*"
+            "Resource": "arn:aws:s3:::${var.logging_bucket_name}/${var.cloudtrail_bucket_prefix}/*"
         },
         {
             "Sid": "AWSLogDeliveryAclCheck",

@@ -52,6 +52,11 @@ variable "cloudtrail_bucket_prefix" {
   default     = "grace-cloudtrail"
 }
 
+variable "flowlogs_bucket_prefix" {
+  description = "(optional) The prefix used when storing Flow logs in the logging bucket"
+  default     = "grace-flowlogs"
+}
+
 variable "cloudtrail_include_global_service_events" {
   description = "(optional) The boolean value indicating whether global services are sending events to this CloudTrail (ie: IAM)"
   default     = "true"
