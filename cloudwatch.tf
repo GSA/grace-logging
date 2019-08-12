@@ -57,7 +57,7 @@ resource "aws_s3_bucket_public_access_block" "logging" {
 
 # Create Bucket Policy
 resource "aws_s3_bucket_policy" "logging" {
-  bucket = "${aws_s3_bucket.logging.id}"
+  bucket = "${var.logging_bucket_name}"
 
   policy = <<POLICY
 {
