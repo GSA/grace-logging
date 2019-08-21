@@ -11,40 +11,7 @@ The code provided within this subcomponent will create the AWS resources neccess
 ## Diagram
 ![grace-logging layout](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.github.com/GSA/grace-logging/grace-logging-documentation/res/diagram.uml)
 
-## Parameters
-|      Parameters      	|  Type  	| Required 	|     Default Value     	|                  Description                  |
-|:--------------------	|:------:	|:--------:	|:---------------------:	|:---------------------------------------------	|
-| parameter_A           | string 	|    yes   	|        word       	    | The word used for X            	              |
-| parameter_B           | num 	  |    yes   	|        123       	      | The numerical value used for Y                |
-
-## Deployment Guide
-
-* Dependencies
-
-* Installation
-
-* Usage
-
-## Maintenance & Operations
-
-
-## Security Compliance
-**Subcomponent approval status:** in assessment
-
-
-
-### Security Control Coverage & SSP Naratives
-
-**Relevant controls:**
-
-Control | CSP/AWS | HOST/OS | App/DB | % Covered | How is it implemented?
---- | :---: | :---: | :---: | :---: | ---
-[AC-2(a)](https://nvd.nist.gov/800-53/Rev4/control/AC-2) | ╳ | | | | AWS accounts are created for tenants of the platform as member accounts in the AWS Organization.
-
-## Repository contents
-
-
-### Inputs
+## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
@@ -79,7 +46,7 @@ Control | CSP/AWS | HOST/OS | App/DB | % Covered | How is it implemented?
 | secops\_accounts | \(optional\) A comma delimited string containing the Account IDs of accounts that should access to your log buckets, if empty no external accounts will be allowed to read the logs | string | `""` | no |
 | secops\_role\_name | \(optional\) The name given to the SecOps read only access to the logging bucket | string | `"grace-secops-read"` | no |
 
-### Outputs
+## Outputs
 
 | Name | Description |
 |------|-------------|
@@ -99,6 +66,26 @@ Control | CSP/AWS | HOST/OS | App/DB | % Covered | How is it implemented?
 | secops\_role\_arn | The Amazon Resource Name \(ARN\) specifying the secops read only role. |
 | secops\_role\_id | The name of the secops read only role. |
 
+## Deployment Guide
+
+* Dependencies
+
+* Installation
+
+* Usage
+
+## Maintenance & Operations
+
+## Security Compliance
+**Subcomponent approval status:** in assessment
+
+### Security Control Coverage & SSP Naratives
+
+**Relevant controls:**
+
+Control | CSP/AWS | HOST/OS | App/DB | % Covered | How is it implemented?
+--- | :---: | :---: | :---: | :---: | ---
+[AC-2(a)](https://nvd.nist.gov/800-53/Rev4/control/AC-2) | ╳ | | | | AWS accounts are created for tenants of the platform as member accounts in the AWS Organization.
 
 ## Public domain
 
