@@ -5,7 +5,9 @@
 !includeurl AWSPUML/common.puml
 !includeurl AWSPUML/Storage/AmazonS3/AmazonS3.puml
 !includeurl AWSPUML/Storage/AmazonS3/bucket/bucket.puml
+!includeurl AWSPUML/ManagementTools/AWSCloudTrail/AWSCloudTrail.puml
 
+AWSCLOUDTRAIL(ct)
 
 AMAZONS3(s3) {
     BUCKET(site,grace-logging)
