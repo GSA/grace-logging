@@ -1,7 +1,7 @@
 # GRACE Logging
 
 ## Diagram
-![grace-logging layout](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.github.com/GSA/grace-logging/master/res/diagram.uml)
+![grace-logging layout](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.github.com/GSA/grace-logging/grace-logging-documentation/res/diagram.uml)
 
 ## Repository contents
 
