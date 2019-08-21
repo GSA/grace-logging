@@ -37,9 +37,9 @@ The code provided within this subcomponent will create the AWS resources neccess
 
 **Relevant controls:**
 
-Control | CSP/AWS | HOST/OS | App/DB | How is it implemented?
---- | :---: | :---: | :---: | ---
-[AC-2(a)](https://nvd.nist.gov/800-53/Rev4/control/AC-2) | ╳ | | | AWS accounts are created for tenants of the platform as member accounts in the AWS Organization.
+Control | CSP/AWS | HOST/OS | App/DB | % Covered | How is it implemented?
+--- | :---: | :---: | :---: | :---: | ---
+[AC-2(a)](https://nvd.nist.gov/800-53/Rev4/control/AC-2) | ╳ | | | | AWS accounts are created for tenants of the platform as member accounts in the AWS Organization.
 
 ## Repository contents
 
