@@ -3,10 +3,10 @@
 ## Description
 The code provided within this subcomponent will create the AWS resources neccessary to configure and enable logging and log storage.  The subcomponent also provides a method for configuring a trust relationship with GSA/SecOps to allow for the retrieval and analysis of you CloudTrail log data using their ELK Stack. The GRACE Logging subcomponent relies on the use of the following AWS services and resources:
 
-*[AWS IAM](https://aws.amazon.com/iam/)
-*[Amazon S3](https://aws.amazon.com/s3/)
-*[AWS CloudTrail](https://aws.amazon.com/cloudtrail/)
-*[Amazon CloudWatch](https://aws.amazon.com/cloudwatch/)
+* [AWS IAM](https://aws.amazon.com/iam/)
+* [Amazon S3](https://aws.amazon.com/s3/)
+* [AWS CloudTrail](https://aws.amazon.com/cloudtrail/)
+* [Amazon CloudWatch](https://aws.amazon.com/cloudwatch/)
 
 ## Diagram
 ![grace-logging layout](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.github.com/GSA/grace-logging/grace-logging-documentation/res/diagram.uml)
