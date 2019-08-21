@@ -12,7 +12,10 @@ The code provided within this subcomponent will create the AWS resources neccess
 ![grace-logging layout](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.github.com/GSA/grace-logging/grace-logging-documentation/res/diagram.uml)
 
 ## Parameters
-
+|      Parameters      	|  Type  	| Required 	|     Default Value     	|                  Description                  |
+|:--------------------	|:------:	|:--------:	|:---------------------:	|:---------------------------------------------	|
+| parameter_A           | string 	|    yes   	|        word       	    | The word used for X            	              |
+| parameter_B           | num 	  |    yes   	|        123       	      | The numerical value used for Y                |
 
 ## Deployment Guide
 
@@ -32,7 +35,8 @@ The code provided within this subcomponent will create the AWS resources neccess
 **Relevant controls:**
 
 Control | CSP/AWS | HOST/OS | App/DB | How is it implemented?
---- | --- | --- | --- | ---
+--- | :---: | :---: | :---: | ---
+[AC-2(a)](https://nvd.nist.gov/800-53/Rev4/control/AC-2) | ╳ | | | AWS accounts are created for tenants of the platform as member accounts in the AWS Organization.
 
 ## Repository contents
 
