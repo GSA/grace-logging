@@ -19,8 +19,11 @@ The code provided within this subcomponent will create the AWS resources neccess
 
 ## Deployment Guide
 
-### Dependencies
+* Dependencies
 
+* Installation
+
+* Usage
 
 ## Maintenance & Operations
 
