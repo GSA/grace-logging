@@ -118,8 +118,20 @@ Use `terraform init` to download and install module and providers
 **Relevant controls:**
 
 Control | CSP/AWS | HOST/OS | App/DB | % Covered | How is it implemented?
---- | :---: | :---: | :---: | :---: | ---
-[AC-2(a)](https://nvd.nist.gov/800-53/Rev4/control/AC-2) | ╳ | | | | AWS accounts are created for tenants of the platform as member accounts in the AWS Organization.
+---- | :---: | :---: | :---: | :---: | ---
+[AU-2](https://nvd.nist.gov/800-53/Rev4/control/AU-2) | ╳ | | | | GRACE Logging deploys AWS CloudTrail for generation of Audit Events.
+[AU-3](https://nvd.nist.gov/800-53/Rev4/control/AU-3) | ╳ | | | | GRACE Logging deploys AWS CloudTrail for generation of Audit Events.
+[AU-3(1)](https://nvd.nist.gov/800-53/Rev4/control/AU-3#enhancement-1) | ╳ | | | | GRACE Logging deploys AWS CloudTrail for generation of Audit Events. | ╳ | | | | GRACE Logging deploys AWS CloudTrail for generation of Audit Events.
+[AU-4](https://nvd.nist.gov/800-53/Rev4/control/AU-4) | ╳ | | | | GRACE Logging deploys AWS CloudTrail for generation of Audit Events.
+[AU-6](https://nvd.nist.gov/800-53/Rev4/control/AU-6) | ╳ | | | | GRACE Logging deploys AWS CloudTrail for generation of Audit Events.
+[AU-6(1)](https://nvd.nist.gov/800-53/Rev4/control/AU-6#enhancement-1) | ╳ | | | | GRACE Logging deploys AWS CloudTrail for generation of Audit Events.
+[AU-7](https://nvd.nist.gov/800-53/Rev4/control/AU-7) | ╳ | | | | GRACE Logging deploys AWS CloudTrail for generation of Audit Events.
+[AU-7(1)](https://nvd.nist.gov/800-53/Rev4/control/AU-7#enhancement-1) | ╳ | | | | GRACE Logging deploys AWS CloudTrail for generation of Audit Events.
+[AU-8](https://nvd.nist.gov/800-53/Rev4/control/AU-8) | ╳ | | | | GRACE Logging deploys AWS CloudTrail for generation of Audit Events.
+[AU-8(1)](https://nvd.nist.gov/800-53/Rev4/control/AU-8#enhancement-1) | ╳ | | | | GRACE Logging deploys AWS CloudTrail for generation of Audit Events.
+[AU-9](https://nvd.nist.gov/800-53/Rev4/control/AU-9) | ╳ | | | | GRACE Logging deploys AWS CloudTrail for generation of Audit Events.
+[AU-9(4)](https://nvd.nist.gov/800-53/Rev4/control/AU-9#enhancement-4) | ╳ | | | | GRACE Logging deploys AWS CloudTrail for generation of Audit Events.
+[AU-12](https://nvd.nist.gov/800-53/Rev4/control/AU-12) | ╳ | | | | GRACE Logging deploys AWS CloudTrail for generation of Audit Events.
 
 [top](#top)
 
