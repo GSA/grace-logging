@@ -24,6 +24,12 @@ AMAZONS3(s3) {
     BUCKET(logs,grace-access-logs)
 }
 
+cloud SecOps {
+  node vpc {
+	stack ELK
+  }
+
+SecOps --> sts : Trust Relationship
 sts --> iam : SecOps AssumeRole
 ct -> cw : CT Trail 
 site .r.> logs : access requests
