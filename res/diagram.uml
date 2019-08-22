@@ -45,4 +45,5 @@ ct -> cw : CT Trail
 site .r.> logs : access requests
 site <.r.> iam : SecOps Pull Log Request
 ct -> site : CT Trail
+ELK <.r. site : Logs to SecOps ELK Stack
 @enduml
