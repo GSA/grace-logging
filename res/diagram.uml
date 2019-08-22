@@ -10,9 +10,18 @@
 !includeurl AWSPUML/SecurityIdentityCompliance/AWSIAM/encrypteddata/encrypteddata.puml
 !includeurl AWSPUML/SecurityIdentityCompliance/IAM/role/role.puml
 !includeurl AWSPUML/SecurityIdentityCompliance/IAM/role/role-sprite.puml
+!includeurl AWSPUML/General/AWScloud/AWScloud.puml
+
+skinparam componentArrowColor Black
+skinparam componentBackgroundColor White
+skinparam nodeBackgroundColor White
+skinparam agentBackgroundColor White
+skinparam artifactBackgroundColor White
 
 header GSA IT
 title GRACE Logging
+
+AWSCLOUD(GRACE) {
 
 AWSCLOUDTRAIL(ct, CloudTrail)
 AMAZONCLOUDWATCH(cw, CloudWatch)
@@ -22,6 +31,7 @@ ROLE(iam, grace-secops-read-logs)
 AMAZONS3(s3) {
     BUCKET(site,grace-logging)
     BUCKET(logs,grace-access-logs)
+	}
 }
 
 cloud SecOps {
