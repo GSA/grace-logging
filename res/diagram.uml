@@ -1,19 +1,32 @@
 @startuml
-
 !define AWSPUML https://raw.githubusercontent.com/milo-minderbinder/AWS-PlantUML/release/17-10-18/dist
-
 !includeurl AWSPUML/common.puml
 !includeurl AWSPUML/Storage/AmazonS3/AmazonS3.puml
 !includeurl AWSPUML/Storage/AmazonS3/bucket/bucket.puml
 !includeurl AWSPUML/ManagementTools/AWSCloudTrail/AWSCloudTrail.puml
+!includeurl AWSPUML/ManagementTools/AmazonCloudWatch/AmazonCloudWatch.puml
+!includeurl AWSPUML/SecurityIdentityCompliance/AWSIAM/AWSSTS/AWSSTS.puml
+!includeurl AWSPUML/SecurityIdentityCompliance/AWSIAM/AWSSTS/AWSSTS-sprite.puml
+!includeurl AWSPUML/SecurityIdentityCompliance/AWSIAM/encrypteddata/encrypteddata.puml
+!includeurl AWSPUML/SecurityIdentityCompliance/IAM/role/role.puml
+!includeurl AWSPUML/SecurityIdentityCompliance/IAM/role/role-sprite.puml
 
-AWSCLOUDTRAIL(ct)
+header GSA IT
+title GRACE Logging
+
+AWSCLOUDTRAIL(ct, CloudTrail)
+AMAZONCLOUDWATCH(cw, CloudWatch)
+AWSSTS(sts)
+ROLE(iam, grace-secops-read-logs)
 
 AMAZONS3(s3) {
     BUCKET(site,grace-logging)
     BUCKET(logs,grace-access-logs)
 }
 
+sts --> iam : SecOps AssumeRole
+ct -> cw : CT Trail 
 site .r.> logs : access requests
-
+site <.r.> iam : SecOps Pull Log Request
+ct -> site : CT Trail
 @enduml
