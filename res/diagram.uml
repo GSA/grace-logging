@@ -41,7 +41,7 @@ cloud SecOps {
   }
 
 SecOps ---> sts : Trust Relationship
-iam <- sts : SecOps AssumeRole
+iam <.r. sts : SecOps AssumeRole
 ct -> cw : CT Trail 
 site -> logs : S3 access logs
 site <.r. iam : SecOps Pull Log Request
