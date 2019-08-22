@@ -40,7 +40,7 @@ cloud SecOps {
 	stack ELK
   }
 
-SecOps ---> sts : Trust Relationship
+SecOps ...> sts : Trust Relationship
 iam <.r. sts : SecOps AssumeRole
 ct -> cw : CT Trail 
 site -> logs : S3 access logs
