@@ -11,7 +11,7 @@ The code provided within this subcomponent will create the AWS resources neccess
 ## Diagram
 ![grace-logging layout](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.github.com/GSA/grace-logging/grace-logging-documentation/res/diagram.uml)
 
-## Inputs
+## <a name="input">Inputs</a>
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
@@ -46,7 +46,7 @@ The code provided within this subcomponent will create the AWS resources neccess
 | secops\_accounts | \(optional\) A comma delimited string containing the Account IDs of accounts that should access to your log buckets, if empty no external accounts will be allowed to read the logs | string | `""` | no |
 | secops\_role\_name | \(optional\) The name given to the SecOps read only access to the logging bucket | string | `"grace-secops-read"` | no |
 
-## Outputs
+## <a name="output">Outputs</a>
 
 | Name | Description |
 |------|-------------|
@@ -69,10 +69,24 @@ The code provided within this subcomponent will create the AWS resources neccess
 ## Deployment Guide
 
 * Dependencies
-
-* Installation
+    - Terraform (minimum version v0.10.4; recommend v0.12.6 or greater)
+        - provider.aws ~v2.24.0
+        - provider.template ~v2.1.2
 
 * Usage
+
+Include the module in your Terraform project.  See the above [inputs](#inputs) and [outputs](#outputs) for more details.  Basic example:
+
+```
+module "logging" {
+  source                     = "github.com/GSA/grace-logging"
+  access_logging_bucket_name = "example-access-logs"
+  cloudtrail_name            = "example-trail"
+  logging_bucket_name        = "example-logs"
+}
+```
+
+Use `terraform init` to download and install module and providers
 
 ## Maintenance & Operations
 
