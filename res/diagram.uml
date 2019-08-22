@@ -19,6 +19,13 @@ skinparam agentBackgroundColor White
 skinparam artifactBackgroundColor White
 
 header GSA IT
+
+skinparam titleFontSize 30
+skinparam titleFontColor white
+skinparam titleBorderRoundCorner 15
+skinparam titleBorderThickness 2
+skinparam titleBorderColor red
+skinparam titleBackgroundColor Navy
 title GRACE Logging
 
 AWSCLOUD(GRACE) {
