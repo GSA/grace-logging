@@ -23,7 +23,7 @@ The code provided within this subcomponent will create the AWS resources neccess
 | access\_logging\_bucket\_enable\_backup | \(optional\) The boolean value enabling \(true\) or disabling \(false\) backups to glacier on the access logging bucket | string | `"true"` | no |
 | access\_logging\_bucket\_enable\_versioning | \(optional\) The boolean value enabling \(true\) or disabling \(false\) versioning on the access logging bucket | string | `"true"` | no |
 | access\_logging\_bucket\_ignore\_public\_acls | \(optional\) The boolean value enabling \(true\) or disabling \(false\) the ignoring of public ACLs created for the access logging bucket | string | `"true"` | no |
-| access\_logging\_bucket\_name | \(optional\) The name given to the access logging bucket | string | `"grace-access-logging"` | no |
+| access\_logging\_bucket\_name | \(required\) The name given to the access logging bucket | string | n/a | yes |
 | access\_logging\_bucket\_restrict\_public\_buckets | \(optional\) The boolean value enabling \(true\) or disabling \(false\) the blocking of public and cross-account access with the public bucket policy for the access logging bucket | string | `"true"` | no |
 | cloudtrail\_bucket\_prefix | \(optional\) The prefix used when storing CloudTrail logs in the logging bucket | string | `"grace-cloudtrail"` | no |
 | cloudtrail\_enable\_log\_validation | \(optional\) The boolean value indicating whether this CloudTrail should perform log file integrity validation | string | `"true"` | no |
@@ -41,7 +41,7 @@ The code provided within this subcomponent will create the AWS resources neccess
 | logging\_bucket\_enable\_backup | \(optional\) The boolean value enabling \(true\) or disabling \(false\) backups to glacier on the logging bucket | string | `"true"` | no |
 | logging\_bucket\_enable\_versioning | \(optional\) The boolean value enabling \(true\) or disabling \(false\) versioning on the logging bucket | string | `"true"` | no |
 | logging\_bucket\_ignore\_public\_acls | \(optional\) The boolean value enabling \(true\) or disabling \(false\) the ignoring of public ACLs created for the logging bucket | string | `"true"` | no |
-| logging\_bucket\_name | \(optional\) The name given to the primary logging bucket | string | `"grace-logging"` | no |
+| logging\_bucket\_name | \(required\) The name given to the primary logging bucket | string | n/a | yes |
 | logging\_bucket\_restrict\_public\_buckets | \(optional\) The boolean value enabling \(true\) or disabling \(false\) the blocking of public and cross-account access with the public bucket policy for the logging bucket | string | `"true"` | no |
 | secops\_accounts | \(optional\) A comma delimited string containing the Account IDs of accounts that should access to your log buckets, if empty no external accounts will be allowed to read the logs | string | `""` | no |
 | secops\_role\_name | \(optional\) The name given to the SecOps read only access to the logging bucket | string | `"grace-secops-read"` | no |
