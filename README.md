@@ -127,9 +127,9 @@ Control | CSP/AWS | HOST/OS | App/DB | % Covered | How is it implemented?
 [AU-6(1)](https://nvd.nist.gov/800-53/Rev4/control/AU-6#enhancement-1) | ╳ | | | | GRACE Logging deploys AWS CloudTrail for generation of Audit Events.
 [AU-7](https://nvd.nist.gov/800-53/Rev4/control/AU-7) | ╳ | | | | GRACE Logging deploys AWS CloudTrail for generation of Audit Events.
 [AU-7(1)](https://nvd.nist.gov/800-53/Rev4/control/AU-7#enhancement-1) | ╳ | | | | GRACE Logging deploys AWS CloudTrail for generation of Audit Events.
-[AU-8](https://nvd.nist.gov/800-53/Rev4/control/AU-8) | ╳ | | | | GRACE Logging deploys AWS CloudTrail for generation of Audit Events.
+[AU-8](https://nvd.nist.gov/800-53/Rev4/control/AU-8) | ╳ | | | | GRACE inherits time stamp generation from AWS in coordinated universal time (UTC).
 [AU-8(1)](https://nvd.nist.gov/800-53/Rev4/control/AU-8#enhancement-1) | ╳ | | | | GRACE Logging deploys AWS CloudTrail for generation of Audit Events.
-[AU-9](https://nvd.nist.gov/800-53/Rev4/control/AU-9) | ╳ | | | | GRACE Logging deploys AWS CloudTrail for generation of Audit Events.
+[AU-9](https://nvd.nist.gov/800-53/Rev4/control/AU-9) | ╳ | | | | GRACE utilizes several AWS services to provide protection of audit information.  Amazon CloudTrail logs and AWS Config Snapshots are stored within an encrypted S3 bucket configured with a custom bucket policy to restrict access. 
 [AU-9(4)](https://nvd.nist.gov/800-53/Rev4/control/AU-9#enhancement-4) | ╳ | | | | GRACE Logging deploys AWS CloudTrail for generation of Audit Events.
 [AU-12](https://nvd.nist.gov/800-53/Rev4/control/AU-12) | ╳ | | | | GRACE Logging deploys AWS CloudTrail for generation of Audit Events.
 
