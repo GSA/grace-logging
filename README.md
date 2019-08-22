@@ -1,6 +1,6 @@
-# GRACE Logging
+# <a name="top">GRACE Logging</a>[![CircleCI](https://circleci.com/gh/GSA/grace-logging.svg?style=svg&circle-token=3ba172998300c4ff769a83484c82c8305c8357e7)](https://circleci.com/gh/GSA/grace-logging)
 
-## Description
+## <a name="description">Description</a>
 The code provided within this subcomponent will create the AWS resources neccessary to configure and enable logging and log storage.  The subcomponent also provides a method for configuring a trust relationship with GSA/SecOps to allow for the retrieval and analysis of you CloudTrail log data using their ELK Stack. The GRACE Logging subcomponent relies on the use of the following AWS services and resources:
 
 * [AWS IAM](https://aws.amazon.com/iam/)
@@ -8,10 +8,22 @@ The code provided within this subcomponent will create the AWS resources neccess
 * [AWS CloudTrail](https://aws.amazon.com/cloudtrail/)
 * [Amazon CloudWatch](https://aws.amazon.com/cloudwatch/)
 
-## Diagram
+## <a name="contents">Table of Contents</a>
+
+- [Description](#description)
+- [Diagram](#diagram)
+- [Inputs](#inputs)
+- [Outputs](#outputs)
+- [Deployment Guide](#guide)
+- [Security Compliance](#security)
+- [Public Domain](#license)
+
+## <a name="diagram">Diagram</a>
 ![grace-logging layout](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.github.com/GSA/grace-logging/grace-logging-documentation/res/diagram.uml)
 
-## Inputs
+[top](#top)
+
+## <a name="input">Inputs</a>
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
@@ -46,7 +58,9 @@ The code provided within this subcomponent will create the AWS resources neccess
 | secops\_accounts | \(optional\) A comma delimited string containing the Account IDs of accounts that should access to your log buckets, if empty no external accounts will be allowed to read the logs | string | `""` | no |
 | secops\_role\_name | \(optional\) The name given to the SecOps read only access to the logging bucket | string | `"grace-secops-read"` | no |
 
-## Outputs
+[top](#top)
+
+## <a name="output">Outputs</a>
 
 | Name | Description |
 |------|-------------|
@@ -66,17 +80,37 @@ The code provided within this subcomponent will create the AWS resources neccess
 | secops\_role\_arn | The Amazon Resource Name \(ARN\) specifying the secops read only role. |
 | secops\_role\_id | The name of the secops read only role. |
 
-## Deployment Guide
+[top](#top)
+
+## <a name="guide">Deployment Guide</a>
 
 * Dependencies
-
-* Installation
+    - Terraform (minimum version v0.10.4; recommend v0.12.6 or greater)
+        - provider.aws ~v2.24.0
+        - provider.template ~v2.1.2
 
 * Usage
 
-## Maintenance & Operations
+Include the module in your Terraform project.  See the above [inputs](#inputs) and [outputs](#outputs) for more details.  Basic example:
 
-## Security Compliance
+```
+module "logging" {
+  source                     = "github.com/GSA/grace-logging"
+  access_logging_bucket_name = "example-access-logs"
+  cloudtrail_name            = "example-trail"
+  logging_bucket_name        = "example-logs"
+}
+```
+
+Use `terraform init` to download and install module and providers
+
+[top](#top)
+
+## <a name="ops">Maintenance & Operations</a>
+
+[top](#top)
+
+## <a name="security">Security Compliance</a>
 **Subcomponent approval status:** in assessment
 
 ### Security Control Coverage & SSP Naratives
@@ -87,10 +121,14 @@ Control | CSP/AWS | HOST/OS | App/DB | % Covered | How is it implemented?
 --- | :---: | :---: | :---: | :---: | ---
 [AC-2(a)](https://nvd.nist.gov/800-53/Rev4/control/AC-2) | ╳ | | | | AWS accounts are created for tenants of the platform as member accounts in the AWS Organization.
 
-## Public domain
+[top](#top)
+
+## <a name="license">Public domain</a>
 
 This project is in the worldwide [public domain](LICENSE.md). As stated in [CONTRIBUTING](CONTRIBUTING.md):
 
 > This project is in the public domain within the United States, and copyright and related rights in the work worldwide are waived through the [CC0 1.0 Universal public domain dedication](https://creativecommons.org/publicdomain/zero/1.0/).
 >
 > All contributions to this project will be released under the CC0 dedication. By submitting a pull request, you are agreeing to comply with this waiver of copyright interest.
+
+[top](#top)
