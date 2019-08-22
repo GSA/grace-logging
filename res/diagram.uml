@@ -28,10 +28,11 @@ AMAZONCLOUDWATCH(cw, CloudWatch)
 AWSSTS(sts)
 ROLE(iam, grace-secops-read-logs)
 
+
 AMAZONS3(s3) {
     BUCKET(site,grace-logging)
     BUCKET(logs,grace-access-logs)
-	}
+}
 }
 
 cloud SecOps {
@@ -39,11 +40,11 @@ cloud SecOps {
 	stack ELK
   }
 
-SecOps --> sts : Trust Relationship
-sts --> iam : SecOps AssumeRole
+SecOps ---> sts : Trust Relationship
+sts -> iam : SecOps AssumeRole
 ct -> cw : CT Trail 
-site .r.> logs : access requests
-site <.r.> iam : SecOps Pull Log Request
+site -> logs : S3 access logs
+site <.r. iam : SecOps Pull Log Request
 ct -> site : CT Trail
 ELK <.r. site : Logs to SecOps ELK Stack
 @enduml
