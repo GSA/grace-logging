@@ -11,6 +11,7 @@
 !includeurl AWSPUML/SecurityIdentityCompliance/IAM/role/role.puml
 !includeurl AWSPUML/SecurityIdentityCompliance/IAM/role/role-sprite.puml
 !includeurl AWSPUML/General/AWScloud/AWScloud.puml
+!includeurl AWSPUML/Compute/AmazonEC2/instance/instance.puml
 
 skinparam componentArrowColor Black
 skinparam componentBackgroundColor White
@@ -20,12 +21,13 @@ skinparam artifactBackgroundColor White
 
 header GSA IT
 
-skinparam titleFontSize 30
+skinparam titleFontSize 100
 skinparam titleFontColor white
 skinparam titleBorderRoundCorner 15
 skinparam titleBorderThickness 2
 skinparam titleBorderColor red
 skinparam titleBackgroundColor Navy
+
 title GRACE Logging
 
 AWSCLOUD(GRACE) {
@@ -42,12 +44,15 @@ AMAZONS3(s3) {
 }
 }
 
-cloud SecOps {
-  node vpc {
-	stack ELK
+cloud "SecOps VPC" {
+  node ELK {
   }
+  node EC2 {
+  }
+}
+  
 
-SecOps ..> sts : Trust Relationship
+EC2 ..> sts : Trust Relationship
 iam <.r. sts : SecOps AssumeRole
 ct -[bold,#blue]-> cw : CT Trail 
 site -> logs : S3 access logs
