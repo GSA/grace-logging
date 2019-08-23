@@ -1,12 +1,8 @@
 # <a name="top">GRACE Logging</a>[![CircleCI](https://circleci.com/gh/GSA/grace-logging.svg?style=svg&circle-token=3ba172998300c4ff769a83484c82c8305c8357e7)](https://circleci.com/gh/GSA/grace-logging)
 
 ## <a name="description">Description</a>
-The code provided within this subcomponent will create the AWS resources neccessary to configure and enable logging and log storage.  The subcomponent also provides a method for configuring a trust relationship with GSA/SecOps to allow for the retrieval and analysis of you CloudTrail log data using their ELK Stack. The GRACE Logging subcomponent relies on the use of the following AWS services and resources:
-
-* [AWS IAM](https://aws.amazon.com/iam/)
-* [Amazon S3](https://aws.amazon.com/s3/)
-* [AWS CloudTrail](https://aws.amazon.com/cloudtrail/)
-* [Amazon CloudWatch](https://aws.amazon.com/cloudwatch/)
+   The code provided within this subcomponent will create the AWS resources neccessary to configure and enable logging and log storage.  The subcomponent also provides a method for configuring a trust relationship with GSA/SecOps to allow for the retrieval and analysis of you [AWS CloudTrail](https://aws.amazon.com/cloudtrail/) log data using their ELK Stack. The GRACE Logging subcomponent activates AWS CLoudTrail and creates a multi-region CloudTrail Trail configured to deliver to both an [Amazon S3](https://aws.amazon.com/s3/) bucket and an [Amazon CloudWatch](https://aws.amazon.com/cloudwatch/) Log Group. The required [AWS IAM](https://aws.amazon.com/iam/) resources are created to allow for the permissions required for CloudTrail's log delivery. The S3 bucket created for log storage is setup with a bucket policy, lifecycle policy, server-side encryption, versioning, and access logging. The GRACE logging subcomponent also creates a S3 bucket to store the access-log data generated from the CloudTrail log storage bucket.
+   The GRACE Logging subcomponent will also provide the resources required to create a trust relationship with GSA SecOps.  This trust relationship will allow SecOps to pull the CloudTrail log data from the log storage bucket and analyze it using their Elasticsearch, Logstash, and Kibana (ELK) Stack.  The integration with SecOps utilizes [AWS Security Token Service (STS)](https://docs.aws.amazon.com/STS/latest/APIReference/Welcome.html) to allow the specified SecOps accounts access to assume a role specifically created for the consumption of the log data stored within the S3 log storage bucket. 
 
 ## <a name="contents">Table of Contents</a>
 
