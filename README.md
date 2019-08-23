@@ -123,10 +123,8 @@ Control | CSP/AWS | HOST/OS | App/DB | % Covered | How is it implemented?
 [AU-7](https://nvd.nist.gov/800-53/Rev4/control/AU-7) | ╳ | | | | GRACE Logging configures AWS CloudTrail to deliver its log Trail to both a CLoudWatch Log Group and an S3 bucket.  The CloudWatch Log Group provides on-demand audit review, analysis, and reporting requirements in addition to the ability for conducting after-the-fact investigations of security incidents.  The log events stored within the S3 bucket are encrypted and retained for 365 days before being transfered to Amazon Glacier long term retention. The S3 log bucket is also enabled with S3 Server Access Logging to track all access requests to the bucket.
 [AU-7(1)](https://nvd.nist.gov/800-53/Rev4/control/AU-7#enhancement-1) | ╳ | | | | 
 [AU-8](https://nvd.nist.gov/800-53/Rev4/control/AU-8) | ╳ | | | | GRACE inherits time stamp generation from AWS in coordinated universal time (UTC).
-[AU-8(1)](https://nvd.nist.gov/800-53/Rev4/control/AU-8#enhancement-1) | ╳ | | | | GRACE Logging deploys AWS CloudTrail for generation of Audit Events.
-[AU-9](https://nvd.nist.gov/800-53/Rev4/control/AU-9) | ╳ | | | | GRACE utilizes several AWS services to provide protection of audit information.  Amazon CloudTrail logs and AWS Config Snapshots are stored within an encrypted S3 bucket configured with a custom bucket policy to restrict access. 
-[AU-9(4)](https://nvd.nist.gov/800-53/Rev4/control/AU-9#enhancement-4) | ╳ | | | | GRACE Logging deploys AWS CloudTrail for generation of Audit Events.
-[AU-12](https://nvd.nist.gov/800-53/Rev4/control/AU-12) | ╳ | | | | GRACE Logging deploys AWS CloudTrail for generation of Audit Events.
+[AU-8(1)](https://nvd.nist.gov/800-53/Rev4/control/AU-8#enhancement-1) | ╳ | | | | GRACE inherits time stamp generation from AWS in coordinated universal time (UTC).
+[AU-12](https://nvd.nist.gov/800-53/Rev4/control/AU-12) | ╳ | | | | GRACE Logging  utilizes AWS CloudTrail to log and retain account activity related to actions within the AWS account infrastructure.
 
 [top](#top)
 
