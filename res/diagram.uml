@@ -1,62 +1,28 @@
 @startuml
-!define AWSPUML https://raw.githubusercontent.com/milo-minderbinder/AWS-PlantUML/release/17-10-18/dist
-!includeurl AWSPUML/common.puml
-!includeurl AWSPUML/Storage/AmazonS3/AmazonS3.puml
-!includeurl AWSPUML/Storage/AmazonS3/bucket/bucket.puml
-!includeurl AWSPUML/ManagementTools/AWSCloudTrail/AWSCloudTrail.puml
-!includeurl AWSPUML/ManagementTools/AmazonCloudWatch/AmazonCloudWatch.puml
-!includeurl AWSPUML/SecurityIdentityCompliance/AWSIAM/AWSSTS/AWSSTS.puml
-!includeurl AWSPUML/SecurityIdentityCompliance/AWSIAM/AWSSTS/AWSSTS-sprite.puml
-!includeurl AWSPUML/SecurityIdentityCompliance/AWSIAM/encrypteddata/encrypteddata.puml
-!includeurl AWSPUML/SecurityIdentityCompliance/IAM/role/role.puml
-!includeurl AWSPUML/SecurityIdentityCompliance/IAM/role/role-sprite.puml
-!includeurl AWSPUML/General/AWScloud/AWScloud.puml
-!includeurl AWSPUML/Compute/AmazonEC2/instance/instance.puml
-
-skinparam componentArrowColor Black
-skinparam componentBackgroundColor White
-skinparam nodeBackgroundColor White
-skinparam agentBackgroundColor White
-skinparam artifactBackgroundColor White
-
-header GSA IT
-
-skinparam titleFontSize 65
-skinparam titleFontColor white
-skinparam titleBorderRoundCorner 15
-skinparam titleBorderThickness 2
-skinparam titleBorderColor red
-skinparam titleBackgroundColor Navy
-
-title GRACE Logging
-
-AWSCLOUD(GRACE) {
-
-AWSCLOUDTRAIL(ct, CloudTrail)
-AMAZONCLOUDWATCH(cw, CloudWatch)
-AWSSTS(sts)
-ROLE(iam, grace-secops-read-logs)
-
-
-AMAZONS3(s3) {
-    BUCKET(site,grace-logging)
-    BUCKET(logs,grace-access-logs)
-}
+skinparam {
+    ArrowColor Black
+    NoteBorderColor Black
+    UseCaseBorderColor Black
 }
 
-cloud "SecOps VPC" {
-  node ELK {
-  }
-  node EC2 {
-  }
-}
-  
+ header GRACE Logging Overview
 
-EC2 ..> sts : Trust Relationship
-iam <.r. sts : SecOps AssumeRole
-ct -[bold,#blue]-> cw : CT Trail 
-site -> logs : S3 access logs
-site <.. iam : SecOps Pull Log Request
-ct -[bold,#blue]> site : CT Trail
-ELK <.r. site : Logs to SecOps ELK Stack
-@enduml
+ package "Account" {
+    node "CloudTrail" as CT #Ivory
+    node "CloudWatch" as CW #Ivory
+    node "Glacier" as GL #Ivory
+    node "Logging Bucket" as LB #Ivory
+    node "Access Logging Bucket" as AB #Ivory
+}
+
+ note "sts:AssumeRole" as AR #Lavender
+usecase "SecOps" as SO #Lavender
+
+CT -> LB
+CT -down-> CW
+LB --> GL : long-term storage
+AB -> GL : long-term storage
+LB --> AB : access log storage
+LB <.right. AR : SecOps uses IAM Role\lto gather logs for analysis
+AR <.. SO
+@enduml 
