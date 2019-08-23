@@ -109,18 +109,17 @@ Use `terraform init` to download and install module and providers
 ## <a name="security">Security Compliance</a>
 **Subcomponent approval status:** in assessment
 
-### Security Control Coverage & SSP Naratives
+### Security Control Coverage & SSP Narratives
 
 **Relevant controls:**
 
 Control | CSP/AWS | HOST/OS | App/DB | % Covered | How is it implemented?
 ---- | :---: | :---: | :---: | :---: | ---
-[AU-2](https://nvd.nist.gov/800-53/Rev4/control/AU-2) | ╳ | | | | GRACE Logging deploys AWS CloudTrail for generation of Audit Events.
-[AU-3](https://nvd.nist.gov/800-53/Rev4/control/AU-3) | ╳ | | | | GRACE Logging deploys AWS CloudTrail for generation of Audit Events.
-[AU-3(1)](https://nvd.nist.gov/800-53/Rev4/control/AU-3#enhancement-1) | ╳ | | | | GRACE Logging deploys AWS CloudTrail for generation of Audit Events. | ╳ | | | | GRACE Logging deploys AWS CloudTrail for generation of Audit Events.
-[AU-4](https://nvd.nist.gov/800-53/Rev4/control/AU-4) | ╳ | | | | GRACE Logging deploys AWS CloudTrail for generation of Audit Events.
-[AU-6](https://nvd.nist.gov/800-53/Rev4/control/AU-6) | ╳ | | | | GRACE Logging deploys AWS CloudTrail for generation of Audit Events.
-[AU-6(1)](https://nvd.nist.gov/800-53/Rev4/control/AU-6#enhancement-1) | ╳ | | | | GRACE Logging deploys AWS CloudTrail for generation of Audit Events.
+[AU-2](https://nvd.nist.gov/800-53/Rev4/control/AU-2) | ╳ | | | | GRACE Logging deploys AWS CloudTrail for generation of Audit Events and provides a method of integration with GSA SecOps ELK Stack for additional analysis of log data.
+[AU-3](https://nvd.nist.gov/800-53/Rev4/control/AU-3) | ╳ | | | | GRACE Logging deploys AWS CloudTrail for generation of Audit Events that establishes what type of event occurred, when the event occurred, where the event occurred, the source of the event, the outcome of the event, and the identity of any individuals or subjects associated with the event.
+[AU-3(1)](https://nvd.nist.gov/800-53/Rev4/control/AU-3#enhancement-1) | ╳ | | | | 
+[AU-4](https://nvd.nist.gov/800-53/Rev4/control/AU-4) | ╳ | | | | GRACE Logging utilizes Amazon S3 for the storage of Audit Events and Amazon Glacier for additional long term retention of log data.  These AWS storage services provide an unlimited capacity for log data retention.
+[AU-6(1)](https://nvd.nist.gov/800-53/Rev4/control/AU-6#enhancement-1) | ╳ | | | | GRACE Logging provides an optional method for integration with GSA SecOps for continual review and analysis of log data by leveraging their ELK Stack.
 [AU-7](https://nvd.nist.gov/800-53/Rev4/control/AU-7) | ╳ | | | | GRACE Logging deploys AWS CloudTrail for generation of Audit Events.
 [AU-7(1)](https://nvd.nist.gov/800-53/Rev4/control/AU-7#enhancement-1) | ╳ | | | | GRACE Logging deploys AWS CloudTrail for generation of Audit Events.
 [AU-8](https://nvd.nist.gov/800-53/Rev4/control/AU-8) | ╳ | | | | GRACE inherits time stamp generation from AWS in coordinated universal time (UTC).
