@@ -21,7 +21,7 @@ skinparam artifactBackgroundColor White
 
 header GSA IT
 
-skinparam titleFontSize 100
+skinparam titleFontSize 80
 skinparam titleFontColor white
 skinparam titleBorderRoundCorner 15
 skinparam titleBorderThickness 2
