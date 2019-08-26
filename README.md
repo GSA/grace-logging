@@ -117,19 +117,13 @@ The GRACE Logging subcomponent provides various levels of coverage for several [
 
 **Relevant controls:**
 
-Control | CSP/AWS | HOST/OS | App/DB | % Covered | How is it implemented?
----- | :---: | :---: | :---: | :---: | ---
-[AU-2](https://nvd.nist.gov/800-53/Rev4/control/AU-2) | ╳ | | | | GRACE Logging deploys AWS CloudTrail for generation of Audit Events and provides a method of integration with GSA SecOps ELK Stack for additional analysis of log data.
-[AU-3](https://nvd.nist.gov/800-53/Rev4/control/AU-3) | ╳ | | | | GRACE Logging deploys AWS CloudTrail for generation of Audit Events that establishes what type of event occurred, when the event occurred, where the event occurred, the source of the event, the outcome of the event, and the identity of any individuals or subjects associated with the event.
-[AU-3(1)](https://nvd.nist.gov/800-53/Rev4/control/AU-3#enhancement-1) | ╳ | | | | 
-[AU-4](https://nvd.nist.gov/800-53/Rev4/control/AU-4) | ╳ | | | | GRACE Logging utilizes Amazon S3 for the storage of Audit Events and Amazon Glacier for additional long term retention of log data.  These AWS storage services provide an unlimited capacity for log data retention.
-[AU-6(1)](https://nvd.nist.gov/800-53/Rev4/control/AU-6#enhancement-1) | ╳ | | | | GRACE Logging provides an optional method for integration with GSA SecOps for continual review and analysis of log data by leveraging their ELK Stack.
-[AU-7](https://nvd.nist.gov/800-53/Rev4/control/AU-7) | ╳ | | | | GRACE Logging configures AWS CloudTrail to deliver its log Trail to both a CLoudWatch Log Group and an S3 bucket.  The CloudWatch Log Group provides on-demand audit review, analysis, and reporting requirements in addition to the ability for conducting after-the-fact investigations of security incidents.  The log events stored within the S3 bucket are encrypted and retained for 365 days before being transfered to Amazon Glacier long term retention. The S3 log bucket is also enabled with S3 Server Access Logging to track all access requests to the bucket.
-[AU-7(1)](https://nvd.nist.gov/800-53/Rev4/control/AU-7#enhancement-1) | ╳ | | | | 
-[AU-8](https://nvd.nist.gov/800-53/Rev4/control/AU-8) | ╳ | | | | GRACE inherits time stamp generation from AWS in coordinated universal time (UTC).
-[AU-8(1)](https://nvd.nist.gov/800-53/Rev4/control/AU-8#enhancement-1) | ╳ | | | | GRACE inherits time stamp generation from AWS in coordinated universal time (UTC).
-[AU-12](https://nvd.nist.gov/800-53/Rev4/control/AU-12) | ╳ | | | | GRACE Logging  utilizes AWS CloudTrail to log and retain account activity related to actions within the AWS account infrastructure.
-
+Control | Sub-Control | Narrative | What is included | What is NOT included
+---- | :---: | :---: | :---: | :---
+|[AU-2](https://nvd.nist.gov/800-53/Rev4/control/AU-2) |a| GRACE Logging deploys AWS CloudTrail for generation of Audit Events and provides a method of integration with GSA SecOps ELK Stack for additional analysis of log data. | CSP - AWS (Cloud Trail) | Application, Database, Flow logs, Other AWS logs except cloud trails |
+||b| GRACE Logging deploys AWS CloudTrail for generation of Audit Events and provides a method of integration with GSA SecOps ELK Stack for additional analysis of log data. | CSP - AWS (Cloud Trail) | Application, Database, Flow logs, Other AWS logs except cloud trails |
+||c| GRACE Logging deploys AWS CloudTrail for generation of Audit Events and provides a method of integration with GSA SecOps ELK Stack for additional analysis of log data. | CSP - AWS (Cloud Trail) | Application, Database, Flow logs, Other AWS logs except cloud trails |
+||d| GRACE Logging deploys AWS CloudTrail for generation of Audit Events and provides a method of integration with GSA SecOps ELK Stack for additional analysis of log data. | CSP - AWS (Cloud Trail) | Application, Database, Flow logs, Other AWS logs except cloud trails |
+|[AU-6(1)](https://nvd.nist.gov/800-53/Rev4/control/AU-6#enhancement-1) | |  | CSP - AWS (Cloud Trail) | Application, Database, Flow logs, Other AWS logs except cloud trails |
 
 [top](#top)
 
