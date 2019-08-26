@@ -126,11 +126,6 @@ Control | CSP/AWS | HOST/OS | App/DB | % Covered | How is it implemented?
 [AU-8(1)](https://nvd.nist.gov/800-53/Rev4/control/AU-8#enhancement-1) | ╳ | | | | GRACE inherits time stamp generation from AWS in coordinated universal time (UTC).
 [AU-12](https://nvd.nist.gov/800-53/Rev4/control/AU-12) | ╳ | | | | GRACE Logging  utilizes AWS CloudTrail to log and retain account activity related to actions within the AWS account infrastructure.
 
-AU-2: Audit Events
-- [x] a.  
-- [x] b.  
-- [x] c. 
-- [ ] d. 
 
 [top](#top)
 
