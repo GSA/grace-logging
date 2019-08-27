@@ -120,12 +120,17 @@ The GRACE Logging subcomponent provides various levels of coverage for several [
 Control | Sub-Control | Narrative | What is included | What is NOT included
 ---- | :---: | :---: | :---: | :---
 |[AC-2](https://nvd.nist.gov/800-53/Rev4/control/AU-2) |g|  | CSP - AWS (Cloud Trail) | Application, Database, Flow logs, Other AWS logs except cloud trails |
+|[AC-6(9)](https://nvd.nist.gov/800-53/Rev4/control/AC-6#enhancement-9) | |  | CSP - AWS (Cloud Trail) | Application, Database, Flow logs, Other AWS logs except cloud trails |
 |[AU-2](https://nvd.nist.gov/800-53/Rev4/control/AU-2) |a| GRACE Logging deploys AWS CloudTrail for generation of Audit Events and provides a method of integration with GSA SecOps ELK Stack for additional analysis of log data. | CSP - AWS (Cloud Trail) | Application, Database, Flow logs, Other AWS logs except cloud trails |
 ||b| GRACE Logging deploys AWS CloudTrail for generation of Audit Events and provides a method of integration with GSA SecOps ELK Stack for additional analysis of log data. | CSP - AWS (Cloud Trail) | Application, Database, Flow logs, Other AWS logs except cloud trails |
 ||c| GRACE Logging deploys AWS CloudTrail for generation of Audit Events and provides a method of integration with GSA SecOps ELK Stack for additional analysis of log data. | CSP - AWS (Cloud Trail) | Application, Database, Flow logs, Other AWS logs except cloud trails |
 ||d| GRACE Logging deploys AWS CloudTrail for generation of Audit Events and provides a method of integration with GSA SecOps ELK Stack for additional analysis of log data. | CSP - AWS (Cloud Trail) | Application, Database, Flow logs, Other AWS logs except cloud trails |
 |[AU-6(1)](https://nvd.nist.gov/800-53/Rev4/control/AU-6#enhancement-1) | |  | CSP - AWS (Cloud Trail) | Application, Database, Flow logs, Other AWS logs except cloud trails |
-
+|[SI-4](https://nvd.nist.gov/800-53/Rev4/control/SI-4) |a|  | CSP - AWS (Cloud Trail) | Application, Database, Flow logs, Other AWS logs except cloud trails |
+||b|  | CSP - AWS (Cloud Trail) | Application, Database, Flow logs, Other AWS logs except cloud trails |
+||c|  | CSP - AWS (Cloud Trail) | Application, Database, Flow logs, Other AWS logs except cloud trails |
+||d|  | CSP - AWS (Cloud Trail) | Application, Database, Flow logs, Other AWS logs except cloud trails |
+|[SI-4(2)](https://nvd.nist.gov/800-53/Rev4/control/SI-4#enhancement-2) ||  | CSP - AWS (Cloud Trail) | Application, Database, Flow logs, Other AWS logs except cloud trails |
 [top](#top)
 
 ## <a name="license">Public domain</a>
