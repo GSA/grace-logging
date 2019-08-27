@@ -119,8 +119,8 @@ The GRACE Logging subcomponent provides various levels of coverage for several [
 
 Control | Sub-Control | Narrative | What is included | What is NOT included
 ---- | :---: | :---: | :---: | :---
-|[AC-2](https://nvd.nist.gov/800-53/Rev4/control/AU-2) |g|  | CSP: AWS (CloudTrail) | Application, Database, Flow logs, Other AWS logs except cloud trails |
-|[AC-6(9)](https://nvd.nist.gov/800-53/Rev4/control/AC-6#enhancement-9) | |  | CSP: AWS (CloudTrail) | Application, Database, Flow logs, Other AWS logs except cloud trails |
+|[AC-2](https://nvd.nist.gov/800-53/Rev4/control/AU-2) |g| AWS CloudTrail logs are forwarded to the GSA Enterprise Logging Platform (SecOps).   The GSA Security Operations team  monitors and evaluates these logs for potential misuse of information system accounts as part of their daily Security Operations Center(SOC) process.  | CSP: AWS (CloudTrail) | Application, Database, Flow Logs, other AWS logs |
+|[AC-6(9)](https://nvd.nist.gov/800-53/Rev4/control/AC-6#enhancement-9) | |  AWS CloudTrail logs are enabled and used for the recording and auditing of all privileged functions.  | CSP: AWS (CloudTrail) | Application, Database, Flow Logs, other AWS logs |
 |[AU-2](https://nvd.nist.gov/800-53/Rev4/control/AU-2) |a| GRACE Logging deploys AWS CloudTrail for generation of Audit Events and provides a method of integration with GSA SecOps ELK Stack for additional analysis of log data. | CSP: AWS (CloudTrail) | Application, Database, Flow logs, Other AWS logs except cloud trails |
 ||b| GRACE Logging deploys AWS CloudTrail for generation of Audit Events and provides a method of integration with GSA SecOps ELK Stack for additional analysis of log data. | CSP: AWS (CloudTrail) | Application, Database, Flow logs, Other AWS logs except cloud trails |
 ||c| GRACE Logging deploys AWS CloudTrail for generation of Audit Events and provides a method of integration with GSA SecOps ELK Stack for additional analysis of log data. | CSP: AWS (CloudTrail) | Application, Database, Flow logs, Other AWS logs except cloud trails |
