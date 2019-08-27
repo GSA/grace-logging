@@ -109,7 +109,7 @@ Use `terraform init` to download and install module and providers
 [top](#top)
 
 ## <a name="security">Security Compliance</a>
-The GRACE Logging subcomponent provides various levels of coverage for several [NIST Special Publication 800-53 (Rev. 4) Security Controls](https://nvd.nist.gov/800-53/Rev4/impact/moderate).  These security controls are designated for [FIPS 199 Moderate Impact Systems](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.199.pdf). The table below outlines the security controls associated with the GRACE Logging subcomponent and provides additional information related to the type of coverage, percent coverage, and a brief description of the implementation method utilized.
+The GRACE Logging subcomponent provides various levels of coverage for several [NIST Special Publication 800-53 (Rev. 4) Security Controls](https://nvd.nist.gov/800-53/Rev4/impact/moderate).  These security controls are designated for [FIPS 199 Moderate Impact Systems](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.199.pdf). The table below outlines the security controls associated with the GRACE Logging subcomponent and provides additional information related to the area of coverage and a brief description of the implementation method utilized.
 
 **Subcomponent approval status:** Pending Assessment
 
