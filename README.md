@@ -119,18 +119,19 @@ The GRACE Logging subcomponent provides various levels of coverage for several [
 
 Control | Sub-Control | Narrative | What is included | What is NOT included
 ---- | :---: | :---: | :---: | :---
-|[AC-2](https://nvd.nist.gov/800-53/Rev4/control/AU-2) |g| AWS CloudTrail logs are forwarded to the GSA Enterprise Logging Platform (SecOps).   The GSA Security Operations team  monitors and evaluates these logs for potential misuse of information system accounts as part of their daily Security Operations Center(SOC) process.  | CSP: AWS (CloudTrail) | Application, Database, Flow Logs, other AWS logs |
+|[AC-2](https://nvd.nist.gov/800-53/Rev4/control/AU-2) |g| AWS CloudTrail logs are forwarded to the GSA Enterprise Logging Platform (SecOps). The GSA Security Operations team  monitors and evaluates these logs for potential misuse of information system accounts as part of their daily Security Operations Center(SOC) process.  | CSP: AWS (CloudTrail) | Application, Database, Flow Logs, other AWS logs |
 |[AC-6(9)](https://nvd.nist.gov/800-53/Rev4/control/AC-6#enhancement-9) | |  AWS CloudTrail logs are enabled and used for the recording and auditing of all privileged functions.  | CSP: AWS (CloudTrail) | Application, Database, Flow Logs, other AWS logs |
-|[AU-2](https://nvd.nist.gov/800-53/Rev4/control/AU-2) |a| GRACE Logging deploys AWS CloudTrail for generation of Audit Events and provides a method of integration with GSA SecOps ELK Stack for additional analysis of log data. | CSP: AWS (CloudTrail) | Application, Database, Flow logs, Other AWS logs except cloud trails |
-||b| GRACE Logging deploys AWS CloudTrail for generation of Audit Events and provides a method of integration with GSA SecOps ELK Stack for additional analysis of log data. | CSP: AWS (CloudTrail) | Application, Database, Flow logs, Other AWS logs except cloud trails |
-||c| GRACE Logging deploys AWS CloudTrail for generation of Audit Events and provides a method of integration with GSA SecOps ELK Stack for additional analysis of log data. | CSP: AWS (CloudTrail) | Application, Database, Flow logs, Other AWS logs except cloud trails |
-||d| GRACE Logging deploys AWS CloudTrail for generation of Audit Events and provides a method of integration with GSA SecOps ELK Stack for additional analysis of log data. | CSP: AWS (CloudTrail) | Application, Database, Flow logs, Other AWS logs except cloud trails |
-|[AU-6(1)](https://nvd.nist.gov/800-53/Rev4/control/AU-6#enhancement-1) | |  | CSP: AWS (CloudTrail) | Application, Database, Flow logs, Other AWS logs except cloud trails |
-|[SI-4](https://nvd.nist.gov/800-53/Rev4/control/SI-4) |a|  | CSP: AWS (CloudTrail) | Application, Database, Flow logs, Other AWS logs except cloud trails |
-||b|  | CSP: AWS (CloudTrail) | Application, Database, Flow logs, Other AWS logs except cloud trails |
-||c|  | CSP: AWS (CloudTrail) | Application, Database, Flow logs, Other AWS logs except cloud trails |
-||d|  | CSP: AWS (CloudTrail) | Application, Database, Flow logs, Other AWS logs except cloud trails |
-|[SI-4(2)](https://nvd.nist.gov/800-53/Rev4/control/SI-4#enhancement-2) ||  | CSP: AWS (CloudTrail) | Application, Database, Flow logs, Other AWS logs except cloud trails |
+|[AU-2](https://nvd.nist.gov/800-53/Rev4/control/AU-2) |a| GRACE Logging deploys AWS CloudTrail for generation of Audit Events. S3 server access-logging is enabled for additional audit information pertaining to bucket access requests. | CSP: AWS (CloudTrail, S3) | Application, Database, Flow Logs, other AWS logs |
+||b| GRACE Logging deploys AWS CloudTrail for generation of Audit Events and provides a method of integration with GSA SecOps ELK Stack for additional analysis of log data. | CSP: AWS (CloudTrail) | Application, Database, Flow Logs, other AWS logs |
+||d|  AWS CloudTrail and S3 bucket logging support the capability for audit of organizationally defined events by logging all security-relevant user/API activities and S3 data access activities.  CloudTrail logs are also forwarded to SecOps enterprise logging platform.  S3 access logs are stored in an S3 bucket and archived in AWS Glacier. | CSP: AWS (CloudTrail, S3) | Application, Database, Flow Logs, other AWS logs |
+|[AU-6(1)](https://nvd.nist.gov/800-53/Rev4/control/AU-6#enhancement-1) | | PROCESS | CSP: AWS (CloudTrail) | Application, Database, Flow Logs, other AWS logs |
+|[SI-4](https://nvd.nist.gov/800-53/Rev4/control/SI-4) |a|  The System utilizes the integration of AWS CLoudTrail logs with the SecOps Enterprise Logging Platform to track user account activity to identify unauthorized usage and connections where deemed critical. | CSP: AWS (CloudTrail) | Application, Database, Flow Logs, other AWS logs |
+||b| AWS CloudTrail logs record all user activity within the associated AWS account.  GRACE CloudTrail logs are integrated with SecOps managed Enterprise Logging Platform, which has the capability to collect, record, and report authorized and unauthorized activity.  
+ | CSP: AWS (CloudTrail) | Application, Database, Flow Logs, other AWS logs |
+||c| AWS CloudTrail log sources are fed into the Enterprise Logging Platform which are then used for correlation and review of critical events.  Additionally, S3 and CloudTrail logs are stored in a S3 bucket for 90 days and archived in AWS Glacier for an additional 275 days. 
+ | CSP: AWS (CloudTrail) | Application, Database, Flow Logs, other AWS logs |
+||d| The GSA Security Operations team protects information obtained from AWS CloudTrail logs from unauthorized access, modification, and deletion on Enterprise Logging Platform.  Logs are also stored in GRACE S3 buckets and Amazon Glacier.  | CSP: AWS (CloudTrail) | Application, Database, Flow Logs, other AWS logs |
+|[SI-4(2)](https://nvd.nist.gov/800-53/Rev4/control/SI-4#enhancement-2) || AWS CloudTrail logs are sent to GSA SecOps’s Enterprise Logging Platform.  SecOps reviews logs daily through the SOC. | CSP: AWS (CloudTrail) | Application, Database, Flow Logs, other AWS logs |
 
 [top](#top)
 
