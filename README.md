@@ -109,27 +109,12 @@ Use `terraform init` to download and install module and providers
 [top](#top)
 
 ## <a name="security">Security Compliance</a>
-The GRACE Logging subcomponent provides various levels of coverage for several [NIST Special Publication 800-53 (Rev. 4) Security Controls](https://nvd.nist.gov/800-53/Rev4/impact/moderate).  These security controls are designated for [FIPS 199 Moderate Impact Systems](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.199.pdf). The table below outlines the security controls associated with the GRACE Logging subcomponent and provides additional information related to the area of coverage and a brief description of the implementation method utilized.
+The GRACE Logging subcomponent provides various levels of coverage for several [NIST Special Publication 800-53 (Rev. 4) Security Controls](https://nvd.nist.gov/800-53/Rev4/impact/moderate).  These security controls are designated for [FIPS 199 Moderate Impact Systems](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.199.pdf). Additional information regarding the implementation method utilized can be found within the [GRACE SSP Reference Guide Repository](https://github.com/GSA/grace-ssp/blob/master/README.md).
 
-**Subcomponent approval status:** Pending Assessment
+>**Subcomponent approval status:** Pending Assessment
 
-### Security Control Coverage & SSP Narratives
+>**Relevant controls:** [AC-2](https://nvd.nist.gov/800-53/Rev4/control/AC-2), [AC-6(9)](https://nvd.nist.gov/800-53/Rev4/control/AC-6#enhancement-9), [AU-2](https://nvd.nist.gov/800-53/Rev4/control/AU-2), [AU-6(1)](https://nvd.nist.gov/800-53/Rev4/control/AU-6#enhancement-1), [SI-4](https://nvd.nist.gov/800-53/Rev4/control/SI-4), [SI-4(2)](https://nvd.nist.gov/800-53/Rev4/control/SI-4#enhancement-2)
 
-**Relevant controls:**
-
-Control | Sub-Control | Narrative | What is included | What is NOT included
----- | :---: | :--- | :---: | :---
-|[AC-2](https://nvd.nist.gov/800-53/Rev4/control/AU-2) |g| AWS CloudTrail logs are forwarded to the SecOps Enterprise Logging Platform. The Security Operations team  monitors and evaluates these logs for potential misuse of information system accounts as part of their daily Security Operations Center(SOC) process.  | CSP: AWS (CloudTrail) | Application, Database, Flow Logs, other AWS logs |
-|[AC-6(9)](https://nvd.nist.gov/800-53/Rev4/control/AC-6#enhancement-9) | |  AWS CloudTrail logs are enabled and used for the recording and auditing of all privileged functions.  | CSP: AWS (CloudTrail) | Application, Database, Flow Logs, other AWS logs |
-|[AU-2](https://nvd.nist.gov/800-53/Rev4/control/AU-2) |a| GRACE Logging deploys AWS CloudTrail for generation of Audit Events. S3 server access-logging is enabled for additional audit information pertaining to bucket access requests. | CSP: AWS (CloudTrail, S3) | Application, Database, Flow Logs, other AWS logs |
-||b| GRACE Logging deploys AWS CloudTrail for generation of Audit Events and provides a method of integration with SecOps ELK Stack for additional analysis of log data. | CSP: AWS (CloudTrail) | Application, Database, Flow Logs, other AWS logs |
-||d|  AWS CloudTrail and S3 bucket logging support the capability for audit of organizationally defined events by logging all security-relevant user/API activities and S3 data access activities.  CloudTrail logs are also forwarded to SecOps enterprise logging platform.  S3 access logs are stored in an S3 bucket and archived in AWS Glacier. | CSP: AWS (CloudTrail, S3) | Application, Database, Flow Logs, other AWS logs |
-|[AU-6(1)](https://nvd.nist.gov/800-53/Rev4/control/AU-6#enhancement-1) || AWS CloudTrail logs are forwarded to the SecOps Enterprise Logging Platform. The Security Operations team  monitors and evaluates these logs for potential misuse of information system accounts as part of their daily Security Operations Center(SOC) process. An additional process for monitoring and alerting for application level events will need to be developed and followed.  | CSP: AWS (CloudTrail, S3) | Application, Database, Flow Logs, other AWS logs |
-|[SI-4](https://nvd.nist.gov/800-53/Rev4/control/SI-4) |a|  The System utilizes the integration of AWS CLoudTrail logs with the SecOps Enterprise Logging Platform to track user account activity to identify unauthorized usage and connections where deemed critical. | CSP: AWS (CloudTrail) | Application, Database, Flow Logs, other AWS logs |
-||b| AWS CloudTrail logs record all user activity within the associated AWS account.  GRACE CloudTrail logs are integrated with SecOps managed Enterprise Logging Platform, which has the capability to collect, record, and report authorized and unauthorized activity. | CSP: AWS (CloudTrail) | Application, Database, Flow Logs, other AWS logs |
-||c| AWS CloudTrail log sources are fed into the Enterprise Logging Platform which are then used for correlation and review of critical events.  Additionally, S3 and CloudTrail logs are stored in a S3 bucket for 90 days and archived in AWS Glacier for an additional 275 days. | CSP: AWS (CloudTrail, S3) | Application, Database, Flow Logs, other AWS logs |
-||d| The Security Operations team protects information obtained from AWS CloudTrail logs from unauthorized access, modification, and deletion on Enterprise Logging Platform.  Logs are also stored in GRACE S3 buckets and Amazon Glacier.  | CSP: AWS (CloudTrail, S3) | Application, Database, Flow Logs, other AWS logs |
-|[SI-4(2)](https://nvd.nist.gov/800-53/Rev4/control/SI-4#enhancement-2) || AWS CloudTrail logs are sent to the SecOps Enterprise Logging Platform.  SecOps reviews logs daily through the SOC. | CSP: AWS (CloudTrail) | Application, Database, Flow Logs, other AWS logs |
 
 [top](#top)
 
