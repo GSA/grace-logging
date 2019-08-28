@@ -1,7 +1,7 @@
 # <a name="top">GRACE Logging</a>[![CircleCI](https://circleci.com/gh/GSA/grace-logging.svg?style=svg&circle-token=3ba172998300c4ff769a83484c82c8305c8357e7)](https://circleci.com/gh/GSA/grace-logging)
 
 ## <a name="description">Description</a>
-The code provided within this subcomponent will create the AWS resources necessary to configure and enable logging and log storage. The subcomponent also provides a method for configuring a trust relationship with SecOps to allow for the retrieval and analysis of you AWS CloudTrail log data using their Enterprise Logging Platform. The GRACE Logging subcomponent activates AWS CloudTrail and creates a multi-region CloudTrail Trail configured to deliver to both an Amazon S3 bucket and an Amazon CloudWatch Log Group. The required AWS IAM resources are created to allow for the permissions required for CloudTrail's log delivery. The S3 bucket created for log storage is setup with a bucket policy, lifecycle policy, server-side encryption, versioning, and access logging. The GRACE Logging subcomponent also creates a S3 bucket to store the access-log data generated from the CloudTrail log storage bucket.
+The code provided within this subcomponent will create the AWS resources necessary to configure and enable logging and log storage. The subcomponent also provides a method for configuring a trust relationship with SecOps to allow for the retrieval and analysis of your AWS CloudTrail log data using their Enterprise Logging Platform. The GRACE Logging subcomponent activates AWS CloudTrail and creates a multi-region CloudTrail Trail configured to deliver to both an Amazon S3 bucket and an Amazon CloudWatch Log Group. The required AWS IAM resources are created to allow for the permissions required for CloudTrail's log delivery. The S3 bucket created for log storage is setup with a bucket policy, lifecycle policy, server-side encryption, versioning, and access logging. The GRACE Logging subcomponent also creates a S3 bucket to store the access-log data generated from the CloudTrail log storage bucket.
 
 The GRACE Logging subcomponent will also provide the resources required to create a trust relationship with SecOps. This trust relationship will allow SecOps to pull the CloudTrail log data from the log storage bucket and analyze it using their Enterprise Logging Platform. The integration with SecOps utilizes AWS Security Token Service (STS) to allow the specified SecOps accounts access to assume a role specifically created for the consumption of the log data stored within the S3 log storage bucket.
 >NOTE: Customers can coordinate with [SecOps@gsa.gov](mailto:secops@gsa.gov) to determine the appropriate [AWS Account number(s)](https://github.com/GSA/grace-logging/blob/grace-logging-documentation/variables.tf#L124) to configure for the trust policy. The account numbers specify which trusted account members are allowed to assume the role used for log integration with SecOps. 
@@ -17,7 +17,7 @@ The GRACE Logging subcomponent will also provide the resources required to creat
 - [Public Domain](#license)
 
 ## <a name="diagram">Diagram</a>
-![grace-logging layout](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.github.com/GSA/grace-logging/grace-logging-documentation/res/diagram.uml)
+![grace-logging layout](http://www.plantuml.com/plantuml/proxy?cache=no&fmt=svg&src=https://raw.github.com/GSA/grace-logging/master/res/diagram.uml)
 
 [top](#top)
 
