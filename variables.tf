@@ -1,7 +1,7 @@
 
 variable "access_logging_bucket_name" {
-  description = "(optional) The name given to the access logging bucket"
-  default     = "grace-access-logging"
+  type        = "string"
+  description = "(required) The name given to the access logging bucket"
 }
 
 variable "access_logging_bucket_acl" {
@@ -75,8 +75,8 @@ variable "cloudtrail_log_retention_days" {
 }
 
 variable "logging_bucket_name" {
-  description = "(optional) The name given to the primary logging bucket"
-  default     = "grace-logging"
+  type        = "string"
+  description = "(required) The name given to the primary logging bucket"
 }
 variable "logging_access_logging_prefix" {
   description = "(optional) The prefix used when storing access logs for the logging bucket"

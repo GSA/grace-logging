@@ -1,3 +1,28 @@
 @startuml
-Bob -> Alice : hello
-@enduml
+skinparam {
+    ArrowColor Black
+    NoteBorderColor Black
+    UseCaseBorderColor Black
+}
+
+ header GRACE Logging Overview
+
+ package "Account" {
+    node "CloudTrail" as CT #Ivory
+    node "CloudWatch" as CW #Ivory
+    node "Glacier" as GL #Ivory
+    node "Logging Bucket" as LB #Ivory
+    node "Access Logging Bucket" as AB #Ivory
+}
+
+ note "sts:AssumeRole" as AR #Lavender
+usecase "SecOps" as SO #Lavender
+
+CT -> LB
+CT -down-> CW
+LB --> GL : long-term storage
+AB -> GL : long-term storage
+LB --> AB : access log storage
+LB <.right. AR : SecOps uses IAM Role\lto gather logs for analysis
+AR <.. SO
+@enduml 
