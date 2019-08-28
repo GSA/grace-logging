@@ -17,7 +17,7 @@ The GRACE Logging subcomponent will also provide the resources required to creat
 - [Public Domain](#license)
 
 ## <a name="diagram">Diagram</a>
-![grace-logging layout](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.github.com/GSA/grace-logging/grace-logging-documentation/res/diagram.uml)
+![grace-logging layout](http://www.plantuml.com/plantuml/proxy?cache=no&fmt=svg&src=https://raw.github.com/GSA/grace-logging/master/res/diagram.uml)
 
 [top](#top)
 
