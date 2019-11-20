@@ -4,7 +4,7 @@
 The code provided within this subcomponent will create the AWS resources necessary to configure and enable logging and log storage. The subcomponent also provides a method for configuring a trust relationship with SecOps to allow for the retrieval and analysis of your AWS CloudTrail log data using their Enterprise Logging Platform. The GRACE Logging subcomponent activates AWS CloudTrail and creates a multi-region CloudTrail Trail configured to deliver to both an Amazon S3 bucket and an Amazon CloudWatch Log Group. The required AWS IAM resources are created to allow for the permissions required for CloudTrail's log delivery. The S3 bucket created for log storage is setup with a bucket policy, lifecycle policy, server-side encryption, versioning, and access logging. The GRACE Logging subcomponent also creates a S3 bucket to store the access-log data generated from the CloudTrail log storage bucket.
 
 The GRACE Logging subcomponent will also provide the resources required to create a trust relationship with SecOps. This trust relationship will allow SecOps to pull the CloudTrail log data from the log storage bucket and analyze it using their Enterprise Logging Platform. The integration with SecOps utilizes AWS Security Token Service (STS) to allow the specified SecOps accounts access to assume a role specifically created for the consumption of the log data stored within the S3 log storage bucket.
->NOTE: Customers can coordinate with [SecOps@gsa.gov](mailto:secops@gsa.gov) to determine the appropriate [AWS Account number(s)](https://github.com/GSA/grace-logging/blob/grace-logging-documentation/variables.tf#L124) to configure for the trust policy. The account numbers specify which trusted account members are allowed to assume the role used for log integration with SecOps. 
+>NOTE: Customers can coordinate with [SecOps@gsa.gov](mailto:secops@gsa.gov) to determine the appropriate [AWS Account number(s)](https://github.com/GSA/grace-logging/blob/grace-logging-documentation/variables.tf#L124) to configure for the trust policy. The account numbers specify which trusted account members are allowed to assume the role used for log integration with SecOps.
 
 ## <a name="contents">Table of Contents</a>
 
@@ -83,8 +83,8 @@ The GRACE Logging subcomponent will also provide the resources required to creat
 ## <a name="guide">Deployment Guide</a>
 
 * Dependencies
-    - Terraform (minimum version v0.10.4; recommend v0.12.6 or greater)
-        - provider.aws ~v2.24.0
+    - Terraform (minimum version v0.12.x; recommend v0.12.6 or greater)
+        - provider.aws ~v2.38.0
         - provider.template ~v2.1.2
 
 * Usage
@@ -110,7 +110,7 @@ The GRACE Logging subcomponent provides various levels of coverage for several [
 
 **Subcomponent approval status:** `Pending Assessment`
 
-**Relevant controls:** 
+**Relevant controls:**
 
 | Control Description | Control ID |
 |-|:-:|

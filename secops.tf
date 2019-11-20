@@ -6,28 +6,28 @@
 
 # Generate assume_role_policy from secops_accounts variable
 data "aws_iam_policy_document" "secops" {
-  count = "${length(var.secops_accounts) > 0 ? 1 : 0}"
+  count = length(var.secops_accounts) > 0 ? 1 : 0
   statement {
     actions = ["sts:AssumeRole"]
     principals {
       type        = "AWS"
-      identifiers = "${formatlist("arn:aws:iam::%s:root", split(",", "${var.secops_accounts}"))}"
+      identifiers = formatlist("arn:aws:iam::%s:root", split(",", var.secops_accounts))
     }
   }
 }
 
 # Create IAM Role with assume_role_policy
 resource "aws_iam_role" "secops" {
-  count              = "${length(var.secops_accounts) > 0 ? 1 : 0}"
-  name               = "${var.secops_role_name}"
-  assume_role_policy = "${data.aws_iam_policy_document.secops.0.json}"
+  count              = length(var.secops_accounts) > 0 ? 1 : 0
+  name               = var.secops_role_name
+  assume_role_policy = data.aws_iam_policy_document.secops[0].json
 }
 
 # Create IAM policy
 resource "aws_iam_role_policy" "secops" {
-  count = "${length(var.secops_accounts) > 0 ? 1 : 0}"
-  name  = "${var.secops_role_name}"
-  role  = "${aws_iam_role.secops.0.id}"
+  count = length(var.secops_accounts) > 0 ? 1 : 0
+  name  = var.secops_role_name
+  role  = aws_iam_role.secops[0].id
 
   policy = <<EOF
 {
@@ -52,4 +52,6 @@ resource "aws_iam_role_policy" "secops" {
     ]
 }
 EOF
+
 }
+
