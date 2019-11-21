@@ -61,23 +61,23 @@ output "access_bucket_arn" {
 output "secops_role_arn" {
   description = "The Amazon Resource Name (ARN) specifying the secops read only role."
   value = [
-    for index in aws_iam_role.secops :
-    aws_iam_role.secops[index]["arn"]
+    for role in aws_iam_role.secops :
+    role.arn
   ]
 }
 
 output "secops_role_id" {
   description = "The name of the secops read only role."
   value = [
-    for index in aws_iam_role.secops :
-    aws_iam_role.secops[index]["id"]
+    for role in aws_iam_role.secops :
+    role.id
   ]
 }
 
 output "secops_policy_id" {
   description = "The ID of the secops read only policy."
   value = [
-    for index in aws_iam_role_policy.secops :
-    aws_iam_role_policy.secops[index]["id"]
+    for policy in aws_iam_role_policy.secops :
+    policy.id
   ]
 }
