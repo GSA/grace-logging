@@ -3,6 +3,12 @@ variable "access_logging_bucket_name" {
   description = "(required) The name given to the access logging bucket"
 }
 
+variable "access_logging_bucket_destroy" {
+  type        = boolean
+  description = "(optional) The boolean value indicating whether Terraform can destroy the bucket with objects still inside"
+  optional    = "false"
+}
+
 variable "access_logging_bucket_acl" {
   description = "(optional) The ACL applied to the access logging bucket"
   default     = "log-delivery-write"
@@ -86,6 +92,12 @@ variable "cloudtrail_log_retention_days" {
 variable "logging_bucket_name" {
   type        = string
   description = "(required) The name given to the primary logging bucket"
+}
+
+variable "logging_bucket_destroy" {
+  type        = boolean
+  description = "(optional) The boolean value indicating whether Terraform can destroy the bucket with objects still inside"
+  optional    = "false"
 }
 
 variable "logging_access_logging_prefix" {

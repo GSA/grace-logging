@@ -6,8 +6,9 @@
 
 # Create Bucket
 resource "aws_s3_bucket" "logging" {
-  bucket = var.logging_bucket_name
-  acl    = var.logging_bucket_acl
+  bucket        = var.logging_bucket_name
+  acl           = var.logging_bucket_acl
+  force_destroy = var.logging_bucket_destroy
 
   logging {
     target_bucket = aws_s3_bucket.access.id
@@ -76,8 +77,9 @@ resource "aws_s3_bucket_policy" "logging" {
 
 # Create S3 Bucket
 resource "aws_s3_bucket" "access" {
-  bucket = var.access_logging_bucket_name
-  acl    = var.access_logging_bucket_acl
+  bucket        = var.access_logging_bucket_name
+  acl           = var.access_logging_bucket_acl
+  force_destroy = var.access_logging_bucket_destroy
 
   versioning {
     enabled = var.access_logging_bucket_enable_versioning
