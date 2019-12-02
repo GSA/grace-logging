@@ -4,7 +4,6 @@ variable "access_logging_bucket_name" {
 }
 
 variable "access_logging_bucket_destroy" {
-  type        = boolean
   description = "(optional) The boolean value indicating whether Terraform can destroy the bucket with objects still inside"
   default    = "false"
 }
@@ -95,7 +94,6 @@ variable "logging_bucket_name" {
 }
 
 variable "logging_bucket_destroy" {
-  type        = boolean
   description = "(optional) The boolean value indicating whether Terraform can destroy the bucket with objects still inside"
   default    = "false"
 }
