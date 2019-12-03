@@ -5,7 +5,7 @@ variable "access_logging_bucket_name" {
 
 variable "access_logging_bucket_destroy" {
   description = "(optional) The boolean value indicating whether Terraform can destroy the bucket with objects still inside"
-  default    = "false"
+  default     = "false"
 }
 
 variable "access_logging_bucket_acl" {
@@ -95,7 +95,7 @@ variable "logging_bucket_name" {
 
 variable "logging_bucket_destroy" {
   description = "(optional) The boolean value indicating whether Terraform can destroy the bucket with objects still inside"
-  default    = "false"
+  default     = "false"
 }
 
 variable "logging_access_logging_prefix" {
@@ -157,4 +157,3 @@ variable "secops_role_name" {
   description = "(optional) The name given to the SecOps read only access to the logging bucket"
   default     = "grace-secops-read"
 }
-
