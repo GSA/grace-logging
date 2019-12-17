@@ -93,7 +93,7 @@ Include the module in your Terraform project.  See the above [inputs](#inputs) a
 
 ```
 module "logging" {
-  source                     = "github.com/GSA/grace-logging"
+  source                     = "github.com/GSA/grace-logging?ref=v0.0.3"
   access_logging_bucket_name = "example-access-logs"
   cloudtrail_name            = "example-trail"
   logging_bucket_name        = "example-logs"
