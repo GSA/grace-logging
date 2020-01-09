@@ -4,8 +4,9 @@ variable "access_logging_bucket_name" {
 }
 
 variable "access_logging_bucket_destroy" {
+  type        = bool
   description = "(optional) The boolean value indicating whether Terraform can destroy the bucket with objects still inside"
-  default     = "false"
+  default     = false
 }
 
 variable "access_logging_bucket_acl" {
@@ -14,13 +15,15 @@ variable "access_logging_bucket_acl" {
 }
 
 variable "access_logging_bucket_enable_versioning" {
+  type        = bool
   description = "(optional) The boolean value enabling (true) or disabling (false) versioning on the access logging bucket"
-  default     = "true"
+  default     = true
 }
 
 variable "access_logging_bucket_enable_backup" {
+  type        = bool
   description = "(optional) The boolean value enabling (true) or disabling (false) backups to glacier on the access logging bucket"
-  default     = "true"
+  default     = true
 }
 
 variable "access_logging_bucket_backup_days" {
@@ -34,23 +37,27 @@ variable "access_logging_bucket_backup_expiration_days" {
 }
 
 variable "access_logging_bucket_block_public_acls" {
+  type        = bool
   description = "(optional) The boolean value enabling (true) or disabling (false) the blocking of public ACL creation for the access logging bucket"
-  default     = "true"
+  default     = true
 }
 
 variable "access_logging_bucket_ignore_public_acls" {
+  type        = bool
   description = "(optional) The boolean value enabling (true) or disabling (false) the ignoring of public ACLs created for the access logging bucket"
-  default     = "true"
+  default     = true
 }
 
 variable "access_logging_bucket_block_public_policy" {
+  type        = bool
   description = "(optional) The boolean value enabling (true) or disabling (false) the blocking of public policy creation for the access logging bucket"
-  default     = "true"
+  default     = true
 }
 
 variable "access_logging_bucket_restrict_public_buckets" {
+  type        = bool
   description = "(optional) The boolean value enabling (true) or disabling (false) the blocking of public and cross-account access with the public bucket policy for the access logging bucket"
-  default     = "true"
+  default     = true
 }
 
 variable "cloudtrail_name" {
@@ -69,18 +76,21 @@ variable "flowlogs_bucket_prefix" {
 }
 
 variable "cloudtrail_include_global_service_events" {
+  type        = bool
   description = "(optional) The boolean value indicating whether global services are sending events to this CloudTrail (ie: IAM)"
-  default     = "true"
+  default     = true
 }
 
 variable "cloudtrail_multi_region" {
+  type        = bool
   description = "(optional) The boolean value indicating whether this CloudTrail is multi-region"
-  default     = "true"
+  default     = true
 }
 
 variable "cloudtrail_enable_log_validation" {
+  type        = bool
   description = "(optional) The boolean value indicating whether this CloudTrail should perform log file integrity validation"
-  default     = "true"
+  default     = true
 }
 
 variable "cloudtrail_log_retention_days" {
@@ -94,8 +104,9 @@ variable "logging_bucket_name" {
 }
 
 variable "logging_bucket_destroy" {
+  type        = bool
   description = "(optional) The boolean value indicating whether Terraform can destroy the bucket with objects still inside"
-  default     = "false"
+  default     = false
 }
 
 variable "logging_access_logging_prefix" {
@@ -109,13 +120,15 @@ variable "logging_bucket_acl" {
 }
 
 variable "logging_bucket_enable_versioning" {
+  type        = bool
   description = "(optional) The boolean value enabling (true) or disabling (false) versioning on the logging bucket"
-  default     = "true"
+  default     = true
 }
 
 variable "logging_bucket_enable_backup" {
+  type        = bool
   description = "(optional) The boolean value enabling (true) or disabling (false) backups to glacier on the logging bucket"
-  default     = "true"
+  default     = true
 }
 
 variable "logging_bucket_backup_days" {
@@ -129,23 +142,27 @@ variable "logging_bucket_backup_expiration_days" {
 }
 
 variable "logging_bucket_block_public_acls" {
+  type        = bool
   description = "(optional) The boolean value enabling (true) or disabling (false) the blocking of public ACL creation for the logging bucket"
-  default     = "true"
+  default     = true
 }
 
 variable "logging_bucket_ignore_public_acls" {
+  type        = bool
   description = "(optional) The boolean value enabling (true) or disabling (false) the ignoring of public ACLs created for the logging bucket"
-  default     = "true"
+  default     = true
 }
 
 variable "logging_bucket_block_public_policy" {
+  type        = bool
   description = "(optional) The boolean value enabling (true) or disabling (false) the blocking of public policy creation for the logging bucket"
-  default     = "true"
+  default     = true
 }
 
 variable "logging_bucket_restrict_public_buckets" {
+  type        = bool
   description = "(optional) The boolean value enabling (true) or disabling (false) the blocking of public and cross-account access with the public bucket policy for the logging bucket"
-  default     = "true"
+  default     = true
 }
 
 variable "secops_accounts" {
