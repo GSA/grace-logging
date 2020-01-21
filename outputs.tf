@@ -13,6 +13,11 @@ output "cloudtrail_log_group_arn" {
   value       = aws_cloudwatch_log_group.cloudtrail.arn
 }
 
+output "cloudtrail_log_group_name" {
+  description = "The name of the CloudTrail log group"
+  value       = aws_cloudwatch_log_group.cloudtrail.name
+}
+
 output "cloudtrail_role_arn" {
   description = "The Amazon Resource Name (ARN) specifying the CloudTrail role."
   value       = aws_iam_role.cloudtrail.arn
