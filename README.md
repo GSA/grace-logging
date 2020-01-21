@@ -70,6 +70,7 @@ The GRACE Logging subcomponent will also provide the resources required to creat
 | cloudtrail\_kms\_key\_arn | The Amazon Resource Name \(ARN\) of the CloudTrail KMS key. |
 | cloudtrail\_kms\_key\_id | The globally unique identifier for the CloudTrail KMS key. |
 | cloudtrail\_log\_group\_arn | The Amazon Resource Name \(ARN\) specifying the CloudTrail log group |
+| cloudtrail\_log\_group\_name | The name of the CloudTrail log group |
 | cloudtrail\_policy\_id | The ID of the CloudTrail policy. |
 | cloudtrail\_role\_arn | The Amazon Resource Name \(ARN\) specifying the CloudTrail role. |
 | cloudtrail\_role\_id | The name of the CloudTrail role. |
@@ -94,7 +95,7 @@ Include the module in your Terraform project.  See the above [inputs](#inputs) a
 
 ```
 module "logging" {
-  source                     = "github.com/GSA/grace-logging?ref=v0.0.3"
+  source                     = "github.com/GSA/grace-logging?ref=v0.0.5"
   access_logging_bucket_name = "example-access-logs"
   cloudtrail_name            = "example-trail"
   logging_bucket_name        = "example-logs"
