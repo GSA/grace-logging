@@ -76,6 +76,7 @@ The GRACE Logging subcomponent will also provide the resources required to creat
 | cloudtrail\_role\_id | The name of the CloudTrail role. |
 | logging\_bucket\_arn | The ARN of the logging bucket. |
 | logging\_bucket\_id | The name of the logging bucket. |
+| logging\_bucket\_policy | The policy text applied to the logging bucket |
 | secops\_policy\_id | The ID of the SecOps read only policy. |
 | secops\_role\_arn | The Amazon Resource Name \(ARN\) specifying the SecOps read only role. |
 | secops\_role\_id | The name of the SecOps read only role. |
