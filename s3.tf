@@ -67,6 +67,8 @@ data "template_file" "bucket_policy" {
 resource "aws_s3_bucket_policy" "logging" {
   bucket = aws_s3_bucket.logging.id
   policy = data.template_file.bucket_policy.rendered
+
+  depends_on = [aws_s3_bucket_public_access_block.logging]
 }
 
 ######################################

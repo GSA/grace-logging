@@ -53,6 +53,11 @@ output "logging_bucket_id" {
   value       = aws_s3_bucket.logging.id
 }
 
+output "logging_bucket_policy" {
+  description = "The policy text applied to the logging bucket"
+  value       = aws_s3_bucket_policy.logging.policy
+}
+
 output "access_bucket_id" {
   description = "The name of the access log bucket."
   value       = aws_s3_bucket.access.id
