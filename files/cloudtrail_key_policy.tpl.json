@@ -96,7 +96,7 @@
             }
         },
         {
-            "Sid": "Allow VPC Flow Logs to use the key",
+            "Sid": "Allow VPC Flow Logs to use the key for encrypted logs",
             "Effect": "Allow",
             "Principal": {
                 "Service": [
