@@ -7,7 +7,8 @@
       "Principal": {
         "Service": [
           "config.amazonaws.com",
-          "cloudtrail.amazonaws.com"
+          "cloudtrail.amazonaws.com",
+          "delivery.logs.amazonaws.com"
         ]
       },
       "Action": "s3:PutObject",
