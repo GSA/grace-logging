@@ -53,35 +53,6 @@
       },
       "Action": "s3:GetBucketAcl",
       "Resource": "arn:aws:s3:::${bucket}"
-    },
-    {
-      "Sid": "DenyNonAESEncryptedObjectUploads",
-      "Effect": "Deny",
-      "Principal": {
-        "AWS": "*"
-      },
-      "Action": "s3:PutObject",
-      "Resource": "arn:aws:s3:::${bucket}/*",
-      "Condition": {
-        "StringNotEquals": {
-          "s3:x-amz-server-side-encryption": [
-            "AES256",
-            "aws:kms"
-          ]
-        }
-      }
-    },
-    {
-      "Sid": "DenyUnEncryptedObjectUploads",
-      "Effect": "Deny",
-      "Principal": "*",
-      "Action": "s3:PutObject",
-      "Resource": "arn:aws:s3:::${bucket}/*",
-      "Condition": {
-        "Null": {
-          "s3:x-amz-server-side-encryption": "true"
-        }
-      }
     }
   ]
 }
