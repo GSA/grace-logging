@@ -61,6 +61,21 @@
             }
         },
         {
+            "Sid": "Enable IAM SecOps Role Permissions",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::${account_id}:role/grace-secops-read"
+            },
+            "Action": [
+                "kms:Encrypt",
+                "kms:Decrypt",
+                "kms:ReEncrypt*",
+                "kms:GenerateDataKey*",
+                "kms:DescribeKey"
+            ],
+            "Resource": "*"
+        },
+        {
             "Sid": "Allow alias creation during setup",
             "Effect": "Allow",
             "Principal": {
