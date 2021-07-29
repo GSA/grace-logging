@@ -64,7 +64,7 @@
             "Sid": "Enable IAM SecOps Role Permissions",
             "Effect": "Allow",
             "Principal": {
-                "AWS": "arn:aws:iam::${account_id}:role/grace-secops-read"
+                "AWS": "arn:aws:iam::${account_id}:role/${secops_role}"
             },
             "Action": [
                 "kms:Encrypt",
