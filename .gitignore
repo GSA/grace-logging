@@ -1,5 +1,6 @@
 ## Terraform ##
 *.tfvars
+.terraform.lock.hcl
 # Compiled files
 *.tfstate*
 # Module directory
