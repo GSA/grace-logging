@@ -7,31 +7,67 @@
 # Create Bucket
 resource "aws_s3_bucket" "logging" {
   bucket        = var.logging_bucket_name
-  acl           = var.logging_bucket_acl
   force_destroy = var.logging_bucket_destroy
+}
 
-  logging {
-    target_bucket = aws_s3_bucket.access.id
-    target_prefix = var.logging_access_logging_prefix
+# Configure bucket ACL
+resource "aws_s3_bucket_acl" "logging" {
+  bucket = aws_s3_bucket.logging.id
+  acl    = var.logging_bucket_acl
+  
+  depends_on = [aws_s3_bucket_ownership_controls.logging]
+}
+
+# Configure bucket ownership controls
+resource "aws_s3_bucket_ownership_controls" "logging" {
+  bucket = aws_s3_bucket.logging.id
+
+  rule {
+    object_ownership = "BucketOwnerPreferred"
   }
+}
 
-  versioning {
-    enabled = var.logging_bucket_enable_versioning
+# Configure access logging
+resource "aws_s3_bucket_logging" "logging" {
+  bucket = aws_s3_bucket.logging.id
+
+  target_bucket = aws_s3_bucket.access.id
+  target_prefix = var.logging_access_logging_prefix
+}
+
+# Configure versioning
+resource "aws_s3_bucket_versioning" "logging" {
+  bucket = aws_s3_bucket.logging.id
+  
+  versioning_configuration {
+    status = var.logging_bucket_enable_versioning ? "Enabled" : "Disabled"
   }
+}
 
-  server_side_encryption_configuration {
-    rule {
-      apply_server_side_encryption_by_default {
-        kms_master_key_id = aws_kms_key.cloudtrail.arn
-        sse_algorithm     = "aws:kms"
-      }
+# Configure server-side encryption
+resource "aws_s3_bucket_server_side_encryption_configuration" "logging" {
+  bucket = aws_s3_bucket.logging.id
+
+  rule {
+    apply_server_side_encryption_by_default {
+      kms_master_key_id = aws_kms_key.cloudtrail.arn
+      sse_algorithm     = "aws:kms"
     }
   }
+}
 
-  lifecycle_rule {
-    enabled = var.logging_bucket_enable_backup
+# Configure lifecycle
+resource "aws_s3_bucket_lifecycle_configuration" "logging" {
+  count  = var.logging_bucket_enable_backup ? 1 : 0
+  bucket = aws_s3_bucket.logging.id
 
-    prefix = var.logging_access_logging_prefix
+  rule {
+    id     = "backup_and_cleanup"
+    status = "Enabled"
+
+    filter {
+      prefix = var.logging_access_logging_prefix
+    }
 
     transition {
       days          = var.logging_bucket_backup_days
@@ -54,19 +90,14 @@ resource "aws_s3_bucket_public_access_block" "logging" {
   restrict_public_buckets = var.logging_bucket_restrict_public_buckets
 }
 
-data "template_file" "bucket_policy" {
-  template = file("${path.module}/files/bucket_policy.tpl.json")
-  vars = {
-    bucket            = var.logging_bucket_name
-    flowlog_folder    = var.flowlogs_bucket_prefix
-    cloudtrail_folder = var.cloudtrail_bucket_prefix
-  }
-}
-
 # Create Bucket Policy
 resource "aws_s3_bucket_policy" "logging" {
   bucket = aws_s3_bucket.logging.id
-  policy = data.template_file.bucket_policy.rendered
+  policy = templatefile("${path.module}/files/bucket_policy.tpl.json", {
+    bucket            = var.logging_bucket_name
+    flowlog_folder    = var.flowlogs_bucket_prefix
+    cloudtrail_folder = var.cloudtrail_bucket_prefix
+  })
 
   depends_on = [aws_s3_bucket_public_access_block.logging]
 }
@@ -81,17 +112,47 @@ resource "aws_s3_bucket_policy" "logging" {
 resource "aws_s3_bucket" "access" {
   #tfsec:ignore:AWS002
   bucket        = var.access_logging_bucket_name
-  acl           = var.access_logging_bucket_acl
   force_destroy = var.access_logging_bucket_destroy
+}
 
-  versioning {
-    enabled = var.access_logging_bucket_enable_versioning
+# Configure bucket ACL
+resource "aws_s3_bucket_acl" "access" {
+  bucket = aws_s3_bucket.access.id
+  acl    = var.access_logging_bucket_acl
+  
+  depends_on = [aws_s3_bucket_ownership_controls.access]
+}
+
+# Configure bucket ownership controls
+resource "aws_s3_bucket_ownership_controls" "access" {
+  bucket = aws_s3_bucket.access.id
+
+  rule {
+    object_ownership = "BucketOwnerPreferred"
   }
+}
 
-  lifecycle_rule {
-    enabled = var.access_logging_bucket_enable_backup
+# Configure versioning
+resource "aws_s3_bucket_versioning" "access" {
+  bucket = aws_s3_bucket.access.id
+  
+  versioning_configuration {
+    status = var.access_logging_bucket_enable_versioning ? "Enabled" : "Disabled"
+  }
+}
 
-    prefix = var.access_logging_bucket_name
+# Configure lifecycle
+resource "aws_s3_bucket_lifecycle_configuration" "access" {
+  count  = var.access_logging_bucket_enable_backup ? 1 : 0
+  bucket = aws_s3_bucket.access.id
+
+  rule {
+    id     = "backup_and_cleanup"
+    status = "Enabled"
+
+    filter {
+      prefix = var.access_logging_bucket_name
+    }
 
     transition {
       days          = var.access_logging_bucket_backup_days
@@ -102,12 +163,15 @@ resource "aws_s3_bucket" "access" {
       days = var.access_logging_bucket_backup_expiration_days
     }
   }
+}
 
-  server_side_encryption_configuration {
-    rule {
-      apply_server_side_encryption_by_default {
-        sse_algorithm = "AES256"
-      }
+# Configure server-side encryption
+resource "aws_s3_bucket_server_side_encryption_configuration" "access" {
+  bucket = aws_s3_bucket.access.id
+
+  rule {
+    apply_server_side_encryption_by_default {
+      sse_algorithm = "AES256"
     }
   }
 }

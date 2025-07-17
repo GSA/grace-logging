@@ -174,3 +174,33 @@ variable "secops_role_name" {
   description = "(optional) The name given to the SecOps read only access to the logging bucket"
   default     = "grace-secops-read"
 }
+
+variable "bucket_name" {
+  description = "Name of the S3 bucket for grace logging. If empty, a random name will be generated."
+  type        = string
+  default     = ""
+}
+
+variable "force_destroy" {
+  description = "Allow bucket to be destroyed even if it contains objects"
+  type        = bool
+  default     = false
+}
+
+variable "enable_versioning" {
+  description = "Enable versioning on the S3 bucket"
+  type        = bool
+  default     = true
+}
+
+variable "log_retention_days" {
+  description = "Number of days to retain logs. Set to 0 to disable lifecycle policy."
+  type        = number
+  default     = 90
+}
+
+variable "tags" {
+  description = "Tags to apply to resources"
+  type        = map(string)
+  default     = {}
+}

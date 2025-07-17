@@ -53,6 +53,15 @@
       },
       "Action": "s3:GetBucketAcl",
       "Resource": "arn:aws:s3:::${bucket}"
+    },
+    {
+      "Sid": "AllowUserToGetBucketPolicy",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::133032889584:user/john.jediny@gsa.gov"
+      },
+      "Action": "s3:GetBucketPolicy",
+      "Resource": "arn:aws:s3:::${bucket}"
     }
   ]
 }
